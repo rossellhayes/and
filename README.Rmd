@@ -1,0 +1,125 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+library(and)
+# remotes::install_github("GuangchuangYu/badger")
+library(badger)
+```
+
+# and
+
+<!-- badges: start -->
+<!-- `r badge_cran_release(color = "brightgreen")` -->
+`r badge_lifecycle("experimental")`
+`r badge_license(color = "blueviolet")`
+<!-- `r badge_github_actions(action = "R-CMD-check")` -->
+<!-- `r badge_codecov()` -->
+<!-- `r badge_dependencies()` -->
+<!-- badges: end -->
+
+**and** constructs language-aware lists in R. It extends the functionality of functions like `knitr::combine_words()` and `glue::glue_collapse()` to make "and"-separated and "or"-separated lists that automatically conform to the user's R language settings.
+
+## Installation
+
+<!-- You can install the released version of **nombre** from [CRAN](https://CRAN.R-project.org) with: -->
+
+<!-- ``` {r eval = FALSE} -->
+<!-- install.packages("nombre") -->
+<!-- ``` -->
+
+You can install the development version of **and** from GitHub with:
+
+``` {r eval = FALSE}
+# install.packages("pak")
+pak::pkg_install("rossellhayes/and")
+```
+
+## Usage
+
+```{r include = FALSE}
+library(and)
+```
+
+`and()` creates "and"-separated lists from vectors.
+
+```{r}
+names <- c("John", "Paul", "George", "Ringo")
+and(names)
+```
+
+But the Oxford comma is less common in other varieties of English, what happens if I change my R language to British English?
+
+```{r}
+Sys.setenv(LANG = "en_GB")
+and(names)
+```
+
+What about other languages?
+
+```{r}
+Sys.setenv(LANG = "es")
+and(names)
+Sys.setenv(LANG = "fr")
+and(names)
+Sys.setenv(LANG = "eu")
+and(names)
+```
+
+### Handling the nuances
+
+Creating a list is not as simple as putting a different word between the last two items.
+For example, in Spanish and Italian, the word for "and" changes depending on the first letter of the next word:
+
+```{r}
+princess_bride <- c("Wesley", "Fezzik", "Iñigo Montoya")
+Sys.setenv(LANG = "es")
+and(princess_bride)
+Sys.setenv(LANG = "it")
+and(princess_bride)
+
+the_boss <- c("Bruce Springsteen", "E Street Band")
+Sys.setenv(LANG = "es")
+and(the_boss)
+Sys.setenv(LANG = "it")
+and(the_boss)
+```
+
+### "or"-separated lists
+
+Everything `and()` can do `or()` can do better. Just use `or()` to create "or"-separated lists with all the same contextual awareness.
+
+```{r}
+outcomes <- c("win", "lose", "draw")
+Sys.setenv(LANG = "en_US")
+or(outcomes)
+Sys.setenv(LANG = "es")
+or(outcomes)
+```
+
+### Hardcoding language
+
+Don't want the language of you string to depend on the user's environment variables?
+You can explicitly set the language using the `lang` argument.
+
+```{r}
+and(names, lang = "en_US")
+and(names, lang = "en_GB")
+and(names, lang = "es")
+and(names, lang = "fr")
+```
+
+---
+
+Please note that **nombre** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
