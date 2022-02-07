@@ -9,7 +9,8 @@
 [![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
-<!-- [![R build status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions) -->
+[![R build
+status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions)
 <!-- [![](https://codecov.io/gh/rossellhayes/and/branch/master/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and) -->
 <!-- [![Dependencies](https://tinyverse.netlify.com/badge/and)](https://cran.r-project.org/package=and) -->
 <!-- badges: end -->
@@ -21,9 +22,9 @@ that automatically conform to the user’s R language settings.
 
 ## Installation
 
-<!-- You can install the released version of **nombre** from [CRAN](https://CRAN.R-project.org) with: -->
+<!-- You can install the released version of **and** from [CRAN](https://CRAN.R-project.org) with: -->
 <!-- ``` {r eval = FALSE} -->
-<!-- install.packages("nombre") -->
+<!-- install.packages("and") -->
 <!-- ``` -->
 
 You can install the development version of **and** from GitHub with:
