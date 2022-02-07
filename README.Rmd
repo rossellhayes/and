@@ -17,7 +17,7 @@ library(and)
 library(badger)
 ```
 
-# and
+# and <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
 <!-- `r badge_cran_release(color = "brightgreen")` -->

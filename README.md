@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# and
+# and <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
 <!-- [![](https://www.r-pkg.org/badges/version/and?color=brightgreen)](https://cran.r-project.org/package=and) -->
