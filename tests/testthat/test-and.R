@@ -66,6 +66,25 @@ test_that("set language manually", {
   expect_equal(and(1:4, language = "pt"),    "1, 2, 3 e 4")
 })
 
+test_that("languages with unavailable territories fallback", {
+  expect_equal(and(1:4, language = "en_AU"), "1, 2, 3 and 4")
+  expect_equal(and(1:4, language = "ca_AD"), "1, 2, 3 i 4")
+  expect_equal(and(1:4, language = "cy_AR"), "1, 2, 3 a 4")
+  expect_equal(and(1:4, language = "es_MX"), "1, 2, 3 y 4")
+  expect_equal(and(1:4, language = "eu_FR"), "1, 2, 3 eta 4")
+  expect_equal(and(1:4, language = "fr_CA"), "1, 2, 3 et 4")
+  expect_equal(and(1:4, language = "it_CH"), "1, 2, 3 e 4")
+  expect_equal(and(1:4, language = "pt_MO"), "1, 2, 3 e 4")
+})
+
+test_that("- convereted to _ in language", {
+  expect_equal(and(1:4, language = "en-US"), "1, 2, 3, and 4")
+  expect_equal(and(1:4, language = "en-GB"), "1, 2, 3 and 4")
+  expect_equal(and(1:4, language = "es-MX"), "1, 2, 3 y 4")
+  expect_equal(and(1:4, language = "fr-CA"), "1, 2, 3 et 4")
+  expect_equal(and(1:4, language = "pt-BR"), "1, 2, 3 e 4")
+})
+
 test_that("special handling of vowels in Spanish, Italian, and Welsh", {
   expect_equal(
     withr::with_language("cy", and(c("t", "u", "v"))),
@@ -126,6 +145,18 @@ test_that("special handling of vowels in Spanish, Italian, and Welsh", {
   )
 })
 
+test_that("early return if length(x) == 1", {
+  expect_equal(withr::with_language("en_US", and("test")), "test")
+  expect_equal(withr::with_language("en_GB", and("test")), "test")
+  expect_equal(withr::with_language("ca",    and("test")), "test")
+  expect_equal(withr::with_language("cy",    and("test")), "test")
+  expect_equal(withr::with_language("es",    and("test")), "test")
+  expect_equal(withr::with_language("eu",    and("test")), "test")
+  expect_equal(withr::with_language("fr",    and("test")), "test")
+  expect_equal(withr::with_language("it",    and("test")), "test")
+  expect_equal(withr::with_language("pt",    and("test")), "test")
+})
+
 test_that("invalid language falls back to English", {
   expect_equal(
     withr::with_language("zxx", and(1:2)),
@@ -146,4 +177,10 @@ test_that("invalid language falls back to English", {
     withr::with_language("zxx", or(1:8)),
     withr::with_language("en", or(1:8))
   )
+})
+
+test_that("error if language is not a string", {
+  expect_error(and(1:4, language = 1), class = "and_invalid_language")
+  expect_error(and(1:4, language = character(0)), class = "and_invalid_language")
+  expect_error(and(1:4, language = c("en", "fr")), class = "and_invalid_language")
 })
