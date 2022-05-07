@@ -18,6 +18,18 @@ test_that("and", {
   expect_equal(withr::with_language("fr",    and(1:4)), "1, 2, 3 et 4")
   expect_equal(withr::with_language("it",    and(1:4)), "1, 2, 3 e 4")
   expect_equal(withr::with_language("pt",    and(1:4)), "1, 2, 3 e 4")
+
+  names <- c("John", "Paul", "George", "Ringo")
+
+  expect_equal(withr::with_language("en_US", and(names)), "John, Paul, George, and Ringo")
+  expect_equal(withr::with_language("en_GB", and(names)), "John, Paul, George and Ringo")
+  expect_equal(withr::with_language("ca",    and(names)), "John, Paul, George i Ringo")
+  expect_equal(withr::with_language("cy",    and(names)), "John, Paul, George a Ringo")
+  expect_equal(withr::with_language("es",    and(names)), "John, Paul, George y Ringo")
+  expect_equal(withr::with_language("eu",    and(names)), "John, Paul, George eta Ringo")
+  expect_equal(withr::with_language("fr",    and(names)), "John, Paul, George et Ringo")
+  expect_equal(withr::with_language("it",    and(names)), "John, Paul, George e Ringo")
+  expect_equal(withr::with_language("pt",    and(names)), "John, Paul, George e Ringo")
 })
 
 test_that("or", {

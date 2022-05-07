@@ -13,9 +13,22 @@ library(tidyr)
 
 tempdir <- tempdir()
 
+archive_files <- archive::archive(
+  "https://github.com/unicode-org/cldr-json/archive/refs/heads/main.zip"
+) %>%
+  pull(path)
+
 archive::archive_extract(
   "https://github.com/unicode-org/cldr-json/archive/refs/heads/main.zip",
-  tempdir
+  tempdir,
+  files = c(
+    "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/languages.json",
+    "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/territories.json",
+    archive_files %>%
+      str_subset(
+        "cldr-json-main/cldr-json/cldr-misc-modern/main/.+/listPatterns\\.json"
+      )
+  )
 )
 
 languages <- fs::path(
@@ -145,25 +158,25 @@ list_glue_patterns <- list_patterns %>%
 list_glue_patterns[list_glue_patterns$language == "cy", ] <-
   list_glue_patterns[list_glue_patterns$language == "cy", ] %>%
   mutate(
-    and_end = "{x0} {if (grepl('[^A-Za-z0-9]*[aeiouwy]', ascii(x1))) 'ac' else 'a'} {x1}",
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*[aeiouwy]', ascii(x1))) 'ac' else 'a'} {x1}",
     and_2 = and_end
   )
 
 list_glue_patterns[list_glue_patterns$language == "es", ] <-
   list_glue_patterns[list_glue_patterns$language == "es", ] %>%
   mutate(
-    and_end = "{x0} {if (grepl('[^A-Za-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}",
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}",
     and_2 = and_end,
-    or_end = "{x0} {if (grepl('[^A-Za-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}",
+    or_end = "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}",
     or_2 = or_end
   )
 
 list_glue_patterns[list_glue_patterns$language == "it", ] <-
   list_glue_patterns[list_glue_patterns$language == "it", ] %>%
   mutate(
-    and_end = "{x0} {if (grepl('[^A-Za-z0-9]*h?e', ascii(x1))) 'ed' else 'e'} {x1}",
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*h?e', ascii(x1))) 'ed' else 'e'} {x1}",
     and_2 = and_end,
-    or_end = "{x0} {if (grepl('[^A-Za-z0-9]*(h?o|8)', ascii(x1))) 'od' else 'o'} {x1}",
+    or_end = "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', ascii(x1))) 'od' else 'o'} {x1}",
     or_2 = or_end
   )
 

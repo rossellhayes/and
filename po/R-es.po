@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: and 0.0.0.9000\n"
-"POT-Creation-Date: 2022-05-06 19:49 PDT\n"
-"PO-Revision-Date: 2022-05-06 19:49 PDT\n"
+"POT-Creation-Date: 2022-05-06 21:12 PDT\n"
+"PO-Revision-Date: 2022-05-06 21:12 PDT\n"
 "Last-Translator: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language-Team: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language: es\n"
@@ -20,10 +20,10 @@ msgid "{x0}, {x1}{tag(and_middle)}"
 msgstr "{x0}, {x1}"
 
 msgid "{x0} and {x1}{tag(and_end)}"
-msgstr "{x0} {if (grepl('[^A-Za-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}"
+msgstr "{x0} {if (grepl('^[^a-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}"
 
 msgid "{x0} and {x1}{tag(and_2)}"
-msgstr "{x0} {if (grepl('[^A-Za-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}"
+msgstr "{x0} {if (grepl('^[^a-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}"
 
 msgid "{x0}, {x1}{tag(or_start)}"
 msgstr "{x0}, {x1}"
@@ -32,8 +32,8 @@ msgid "{x0}, {x1}{tag(or_middle)}"
 msgstr "{x0}, {x1}"
 
 msgid "{x0} or {x1}{tag(or_end)}"
-msgstr "{x0} {if (grepl('[^A-Za-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}"
+msgstr "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}"
 
 msgid "{x0} or {x1}{tag(or_2)}"
-msgstr "{x0} {if (grepl('[^A-Za-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}"
+msgstr "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}"
 
