@@ -1,4 +1,5 @@
 #' @keywords internal
+#' @aliases reprex-package
 "_PACKAGE"
 
 ## usethis namespace: start

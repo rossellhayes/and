@@ -9,16 +9,16 @@ Language data is derived from the
 \href{https://cldr.unicode.org/}{Unicode Common Locale Data Repository (CLDR)}
 }
 \usage{
-and(x, ..., lang = NULL)
+and(x, ..., language = NULL)
 
-or(x, ..., lang = NULL)
+or(x, ..., language = NULL)
 }
 \arguments{
 \item{x}{A list of \link{character} strings to combine}
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{lang}{The language to use for translation.
+\item{language}{The language to use for translation.
 If \code{\link{NULL}}, the default, the language of the user's R session is used.
 
 Codes should should be two or three lowercase letters representing the
@@ -26,12 +26,15 @@ language, optionally followed by an underscore and two uppercase letters
 representing a territory.
 For example, \code{"es"} represents Spanish and
 \code{"en_US"} represents American English.
+
 If a territory is specified but there is no specific translation for that
 territory, translations fall back to the general language.
 For example, \code{and} does not include specific translations for
 Canadian French, so \code{"fr_CA"} falls back to \code{"fr"}.
 
-For a list of available languages, see \link{and_languages}.}
+If a language is specified that is not supported by \code{and}, translations
+fall back to English.
+For a list of supported languages, see \link{and_languages}.}
 }
 \value{
 A \link{character} string of length 1
@@ -52,7 +55,7 @@ See \link{and_languages} for available languages.
 and(1:3)
 or(1:3)
 
-and(1:3, lang = "es")
-and(1:3, lang = "jp")
+and(1:3, language = "es")
+or(1:3, language = "ja")
 
 }

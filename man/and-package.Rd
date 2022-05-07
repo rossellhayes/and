@@ -2,8 +2,9 @@
 % Please edit documentation in R/and-package.R
 \docType{package}
 \name{and-package}
-\alias{and}
 \alias{and-package}
+\alias{_PACKAGE}
+\alias{reprex-package}
 \title{and: Construct Natural-Language Lists with Internationalization}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}

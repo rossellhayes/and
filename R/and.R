@@ -19,12 +19,12 @@
 #' and(1:3)
 #' or(1:3)
 #'
-#' and(1:3, lang = "es")
-#' and(1:3, lang = "jp")
+#' and(1:3, language = "es")
+#' or(1:3, language = "ja")
 #'
 #' @param x A list of [character] strings to combine
 #' @param ... These dots are for future extensions and must be empty.
-#' @param lang The language to use for translation.
+#' @param language The language to use for translation.
 #'   If [`NULL`], the default, the language of the user's R session is used.
 #'
 #'   Codes should should be two or three lowercase letters representing the
