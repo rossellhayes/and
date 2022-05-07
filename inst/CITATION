@@ -1,0 +1,14 @@
+citHeader("To cite and in publications use:")
+
+citEntry(
+  entry  = "Manual",
+  title  = "{and}: Construct Natural-Language Lists with Internationalization",
+  author = "Alexander {Rossell Hayes}",
+  year   = 2022,
+  url    = "https://and.rossellhayes.com/",
+  textVersion = paste(
+    "Rossell Hayes, Alexander (2022).",
+    "and: Construct Natural-Language Lists with Internationalization.",
+    "https://and.rossellhayes.com/."
+  )
+)
