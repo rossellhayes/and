@@ -21,6 +21,7 @@ Imports:
     rlang,
     stringi
 Suggests: 
+    covr,
     knitr,
     testthat (>= 3.0.0),
     withr
