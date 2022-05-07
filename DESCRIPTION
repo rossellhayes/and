@@ -11,8 +11,7 @@ Description: Construct language-aware lists in R. Make "and"-separated and
     "or"-separated lists that automatically conform to the user's R
     language settings.
 License: MIT + file LICENSE
-URL: https://github.com/rossellhayes/and,
-    https://rossellhayes.github.io/and/
+URL: http://and.rossellhayes.com, https://github.com/rossellhayes/and
 BugReports: https://github.com/rossellhayes/and/issues
 Depends: 
     R (>= 2.10)
