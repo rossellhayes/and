@@ -1,13 +1,13 @@
-set_lang <- function(lang) {
-  old_lang <- Sys.getenv("LANGUAGE", unset = "en")
-  old_text <- gettext("{''} and {''}", domain = "R-and")
+set_language <- function(language) {
+  old_language <- Sys.getenv("LANGUAGE", unset = "en")
+  old_text <- gettext("{x0}, {x1}{tag(and_start)}", domain = "R-and")
 
-  Sys.setenv("LANGUAGE" = lang)
+  Sys.setenv("LANGUAGE" = language)
 
-  new_lang <- Sys.getenv("LANGUAGE", unset = "en")
-  new_text <- gettext("{''} and {''}", domain = "R-and")
+  new_language <- Sys.getenv("LANGUAGE", unset = "en")
+  new_text <- gettext("{x0}, {x1}{tag(and_start)}", domain = "R-and")
 
-  if (!identical(old_lang, new_lang) && identical(old_text, new_text)) {
+  if (!identical(old_language, new_language) && identical(old_text, new_text)) {
     # On Linux, message translations are cached
     # Messages from the old language may be shown in the new language
     # If this happens, invalidate the cache so new messages have to generate
@@ -16,7 +16,7 @@ set_lang <- function(lang) {
     bindtextdomain("R-base", base_dir)
   }
 
-  return(old_lang)
+  return(old_language)
 }
 
 ascii <- function(x) {

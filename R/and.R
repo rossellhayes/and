@@ -73,8 +73,9 @@ conjoin <- function(
   }
 
   if (!is.null(language)) {
-    rlang::check_installed("withr", "to manually specify a language.")
-    suppressWarnings(withr::local_language(validate_lang(language)))
+    language <- validate_language(language)
+    old_language <- set_language(language)
+    on.exit(set_language(old_language))
   }
 
   if (length(x) == 2) {
@@ -128,13 +129,13 @@ and_glue <- function(conjunction, suffix, data = list()) {
   glue::glue_data(data, gettext(gettext_key, domain = "R-and"))
 }
 
-validate_lang <- function(lang, call = rlang::caller_env()) {
-  if (!is.character(lang) || length(lang) != 1) {
+validate_language <- function(language, call = rlang::caller_env()) {
+  if (!is.character(language) || length(language) != 1) {
     rlang::abort(
       "`lang` must be a character vector of length 1 or NULL.",
       call = call
     )
   }
 
-  lang
+  gsub("-", "_", language)
 }

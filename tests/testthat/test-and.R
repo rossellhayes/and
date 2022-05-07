@@ -54,6 +54,18 @@ test_that("or", {
   expect_equal(withr::with_language("pt",    or(1:4)), "1, 2, 3 ou 4")
 })
 
+test_that("set language manually", {
+  expect_equal(and(1:4, language = "en_US"), "1, 2, 3, and 4")
+  expect_equal(and(1:4, language = "en_GB"), "1, 2, 3 and 4")
+  expect_equal(and(1:4, language = "ca"),    "1, 2, 3 i 4")
+  expect_equal(and(1:4, language = "cy"),    "1, 2, 3 a 4")
+  expect_equal(and(1:4, language = "es"),    "1, 2, 3 y 4")
+  expect_equal(and(1:4, language = "eu"),    "1, 2, 3 eta 4")
+  expect_equal(and(1:4, language = "fr"),    "1, 2, 3 et 4")
+  expect_equal(and(1:4, language = "it"),    "1, 2, 3 e 4")
+  expect_equal(and(1:4, language = "pt"),    "1, 2, 3 e 4")
+})
+
 test_that("special handling of vowels in Spanish, Italian, and Welsh", {
   expect_equal(
     withr::with_language("cy", and(c("t", "u", "v"))),
