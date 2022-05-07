@@ -11,7 +11,7 @@
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions)
-<!-- [![](https://codecov.io/gh/rossellhayes/and/branch/master/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and) -->
+<!-- [![](https://app.codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and) -->
 <!-- [![Dependencies](https://tinyverse.netlify.com/badge/and)](https://cran.r-project.org/package=and) -->
 <!-- badges: end -->
 
@@ -62,33 +62,22 @@ and(names)
 Sys.setenv(LANG = "fr")
 and(names)
 #> [1] "John, Paul, George et Ringo"
-Sys.setenv(LANG = "eu")
+Sys.setenv(LANG = "hi")
 and(names)
-#> [1] "John, Paul, George eta Ringo"
+#> [1] "John, Paul, George, और Ringo"
 ```
 
 ### Handling the nuances
 
 Creating a list is not as simple as putting a different word between the
-last two items. For example, in Spanish and Italian, the word for “and”
-changes depending on the first letter of the next word:
+last two items. For example, in Spanish, the word for “and” changes if
+the next word starts with an *i* or *y*:
 
 ``` r
-princess_bride <- c("Wesley", "Fezzik", "Iñigo Montoya")
+princess_bride <- c("Vizzini", "Fezzik", "Inigo Montoya")
 Sys.setenv(LANG = "es")
 and(princess_bride)
-#> [1] "Wesley, Fezzik e Iñigo Montoya"
-Sys.setenv(LANG = "it")
-and(princess_bride)
-#> [1] "Wesley, Fezzik e Iñigo Montoya"
-
-the_boss <- c("Bruce Springsteen", "E Street Band")
-Sys.setenv(LANG = "es")
-and(the_boss)
-#> [1] "Bruce Springsteen y E Street Band"
-Sys.setenv(LANG = "it")
-and(the_boss)
-#> [1] "Bruce Springsteen ed E Street Band"
+#> [1] "Vizzini, Fezzik e Inigo Montoya"
 ```
 
 ### “or”-separated lists
@@ -101,30 +90,38 @@ outcomes <- c("win", "lose", "draw")
 Sys.setenv(LANG = "en_US")
 or(outcomes)
 #> [1] "win, lose, or draw"
-Sys.setenv(LANG = "es")
+Sys.setenv(LANG = "ja")
 or(outcomes)
-#> [1] "win, lose o draw"
+#> [1] "win、lose、またはdraw"
 ```
 
 ### Hardcoding language
 
 Don’t want the language of you string to depend on the user’s
 environment variables? You can explicitly set the language using the
-`lang` argument.
+`language` argument.
 
 ``` r
-and(names, lang = "en_US")
+and(names, language = "en_US")
+#> Warning in (function (category = "LC_ALL", locale = "") : OS reports request to
+#> set locale to "" cannot be honored
 #> [1] "John, Paul, George, and Ringo"
-and(names, lang = "en_GB")
+and(names, language = "en_GB")
+#> Warning in (function (category = "LC_ALL", locale = "") : OS reports request to
+#> set locale to "" cannot be honored
 #> [1] "John, Paul, George and Ringo"
-and(names, lang = "es")
+and(names, language = "es")
+#> Warning in (function (category = "LC_ALL", locale = "") : OS reports request to
+#> set locale to "" cannot be honored
 #> [1] "John, Paul, George y Ringo"
-and(names, lang = "fr")
+and(names, language = "fr")
+#> Warning in (function (category = "LC_ALL", locale = "") : La requête OS pour
+#> spécifier la localisation à "" n'a pas pu être honorée
 #> [1] "John, Paul, George et Ringo"
 ```
 
 ------------------------------------------------------------------------
 
-Please note that **nombre** is released with a [Contributor Code of
+Please note that **and** is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.

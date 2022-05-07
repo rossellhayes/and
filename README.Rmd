@@ -72,27 +72,19 @@ Sys.setenv(LANG = "es")
 and(names)
 Sys.setenv(LANG = "fr")
 and(names)
-Sys.setenv(LANG = "eu")
+Sys.setenv(LANG = "hi")
 and(names)
 ```
 
 ### Handling the nuances
 
 Creating a list is not as simple as putting a different word between the last two items.
-For example, in Spanish and Italian, the word for "and" changes depending on the first letter of the next word:
+For example, in Spanish, the word for "and" changes if the next word starts with an _i_ or _y_:
 
 ```{r}
-princess_bride <- c("Wesley", "Fezzik", "Iñigo Montoya")
+princess_bride <- c("Vizzini", "Fezzik", "Inigo Montoya")
 Sys.setenv(LANG = "es")
 and(princess_bride)
-Sys.setenv(LANG = "it")
-and(princess_bride)
-
-the_boss <- c("Bruce Springsteen", "E Street Band")
-Sys.setenv(LANG = "es")
-and(the_boss)
-Sys.setenv(LANG = "it")
-and(the_boss)
 ```
 
 ### "or"-separated lists
@@ -103,23 +95,23 @@ Everything `and()` can do `or()` can do better. Just use `or()` to create "or"-s
 outcomes <- c("win", "lose", "draw")
 Sys.setenv(LANG = "en_US")
 or(outcomes)
-Sys.setenv(LANG = "es")
+Sys.setenv(LANG = "ja")
 or(outcomes)
 ```
 
 ### Hardcoding language
 
 Don't want the language of you string to depend on the user's environment variables?
-You can explicitly set the language using the `lang` argument.
+You can explicitly set the language using the `language` argument.
 
 ```{r}
-and(names, lang = "en_US")
-and(names, lang = "en_GB")
-and(names, lang = "es")
-and(names, lang = "fr")
+and(names, language = "en_US")
+and(names, language = "en_GB")
+and(names, language = "es")
+and(names, language = "fr")
 ```
 
 ---
 
-Please note that **nombre** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+Please note that **and** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
