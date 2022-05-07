@@ -128,14 +128,3 @@ and_glue <- function(conjunction, suffix, data = list()) {
 
   glue::glue_data(data, gettext(gettext_key, domain = "R-and"))
 }
-
-validate_language <- function(language, call = rlang::caller_env()) {
-  if (!is.character(language) || length(language) != 1) {
-    rlang::abort(
-      "`lang` must be a character vector of length 1 or NULL.",
-      call = call
-    )
-  }
-
-  gsub("-", "_", language)
-}
