@@ -69,17 +69,16 @@ conjoin <- function(
   rlang::check_dots_empty0(..., call = call)
 
   if (length(x) == 1) {
-    return(x)
+    return(as.character(x))
   }
 
   if (!is.null(language)) {
-    language <- validate_language(language)
     old_language <- set_language(language)
     on.exit(set_language(old_language))
   }
 
   if (length(x) == 2) {
-    return(and_glue(conjunction, "2", list(x0 = x[[1]], x1 = x[[2]])))
+    return(unclass(and_glue(conjunction, "2", list(x0 = x[[1]], x1 = x[[2]]))))
   }
 
   x[2] <- and_glue(conjunction, "start", list(x0 = x[[1]], x1 = x[[2]]))

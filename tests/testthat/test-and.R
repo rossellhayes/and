@@ -157,6 +157,23 @@ test_that("early return if length(x) == 1", {
   expect_equal(withr::with_language("pt",    and("test")), "test")
 })
 
+test_that("ensure `conjoin()` always returns a length 1 string", {
+  and_1 <- and(1)
+  and_2 <- and(1:2)
+  and_3 <- and(1:3)
+  and_100 <- and(1:100)
+
+  expect_equal(class(and_1), "character")
+  expect_equal(class(and_2), "character")
+  expect_equal(class(and_3), "character")
+  expect_equal(class(and_100), "character")
+
+  expect_equal(length(and_1), 1)
+  expect_equal(length(and_2), 1)
+  expect_equal(length(and_3), 1)
+  expect_equal(length(and_100), 1)
+})
+
 test_that("invalid language falls back to English", {
   expect_equal(
     withr::with_language("zxx", and(1:2)),
