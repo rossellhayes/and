@@ -4,6 +4,10 @@
 \alias{and}
 \alias{or}
 \title{Combine a vector into a natural language string}
+\source{
+Language data is derived from the
+\href{https://cldr.unicode.org/}{Unicode Common Locale Data Repository (CLDR)}
+}
 \usage{
 and(x, ..., lang = NULL)
 
@@ -14,46 +18,41 @@ or(x, ..., lang = NULL)
 
 \item{...}{These dots are for future extensions and must be empty.}
 
-\item{lang}{The language to use. If \code{\link{NULL}}, the default, the language of
-the user's R session is used.}
+\item{lang}{The language to use for translation.
+If \code{\link{NULL}}, the default, the language of the user's R session is used.
+
+Codes should should be two or three lowercase letters representing the
+language, optionally followed by an underscore and two uppercase letters
+representing a territory.
+For example, \code{"es"} represents Spanish and
+\code{"en_US"} represents American English.
+If a territory is specified but there is no specific translation for that
+territory, translations fall back to the general language.
+For example, \code{and} does not include specific translations for
+Canadian French, so \code{"fr_CA"} falls back to \code{"fr"}.
+
+For a list of available languages, see \link{and_languages}.}
 }
 \value{
 A \link{character} string of length 1
 }
 \description{
 These functions transform a vector into a single string similar to
-\code{\link[knitr:combine_words]{knitr::combine_words()}} or \code{\link[glue:glue_collapse]{glue::glue_collapse()}}. \code{and()} and \code{or()}
-natively support localization, using translations and punctuation to match
-the users' language settings. (See section "Language" for more details.)
+\code{\link[knitr:combine_words]{knitr::combine_words()}} or \code{\link[glue:glue_collapse]{glue::glue_collapse()}}.
+
+\code{and()} and \code{or()} natively support localization, using translations and
+punctuation to match the users' language settings.
+See \link{and_languages} for available languages.
 \itemize{
 \item \code{and()} combines words using the native conjunctive ("and" in English)
 \item \code{or()} combines words using the native disjunctive ("or" in English)
 }
 }
-\section{Languages}{
-
-
-Translations are available in the following languages:\tabular{llllll}{
-   \strong{code} \tab \strong{language} \tab  \tab \strong{and} \tab \strong{or} \tab  \cr
-   ca \tab català \tab Catalan \tab i \tab o \tab  \cr
-   de \tab Deutsch \tab German \tab und \tab oder \tab  \cr
-   en \tab English \tab  \tab and \tab or \tab  \cr
-   en_US \tab US English \tab  \tab and \tab or \tab (uses Oxford comma) \cr
-   eo \tab esperanto \tab Esperanto \tab kaj \tab aŭ \tab  \cr
-   es \tab español \tab Spanish \tab y / e \tab o / u \tab  \cr
-   eu \tab euskara \tab Basque \tab eta \tab edo \tab  \cr
-   fr \tab français \tab French \tab et \tab ou \tab  \cr
-   it \tab italiano \tab Italian \tab e / ed \tab o / od \tab  \cr
-   pt \tab português \tab Portuguese \tab e \tab ou \tab  \cr
-   tr \tab Türkçe \tab Turkish \tab ve \tab veya \tab  \cr
-}
-}
-
 \examples{
-and(c("Betty", "James", "Inez"))
-or(c("win", "lose", "draw"))
+and(1:3)
+or(1:3)
 
-and(c("libre", "soberana", "independiente"), lang = "es")
-and(c("liberté", "égalité", "fraternité"), lang = "fr")
+and(1:3, lang = "es")
+and(1:3, lang = "jp")
 
 }

@@ -1,12 +1,12 @@
 Package: and
 Title: Construct Natural-Language Lists with Internationalization
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Alexander",
-           family = "Rossell Hayes",
-           role = c("aut", "cre", "cph"),
-           email = "alexander@rossellhayes.com",
-           comment = c(ORCID = "0000-0001-9412-0457"))
+Authors@R: c(
+    person("Alexander", "Rossell Hayes", , "alexander@rossellhayes.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0001-9412-0457")),
+    person(, "Unicode, Inc.", role = c("dtc", "cph"),
+           comment = "Language data")
+  )
 Description: Construct language-aware lists in R. Make "and"-separated and
     "or"-separated lists that automatically conform to the user's R
     language settings.
@@ -17,11 +17,12 @@ Depends:
     R (>= 2.10)
 Imports: 
     glue,
+    rlang,
     stringi
 Suggests: 
-    withr,
     knitr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    withr
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
