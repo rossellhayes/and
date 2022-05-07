@@ -14,6 +14,7 @@ Construct language-aware lists in R. Make "and"-separated and "or"-separated lis
 \seealso{
 Useful links:
 \itemize{
+  \item \url{http://and.rossellhayes.com}
   \item \url{https://github.com/rossellhayes/and}
   \item Report bugs at \url{https://github.com/rossellhayes/and/issues}
 }
