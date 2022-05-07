@@ -5,3 +5,7 @@ str_remove_all <- function(string, pattern) {
 tag <- function(...) {
   return("")
 }
+
+ascii <- function(x) {
+  stringi::stri_trans_tolower(stringi::stri_trans_general(x, "Latin-ASCII"))
+}

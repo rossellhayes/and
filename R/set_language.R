@@ -49,12 +49,12 @@
 set_language <- function(language) {
   language <- validate_language(language)
 
-  old_language <- Sys.getenv("LANGUAGE", unset = "en")
+  old_language <- Sys.getenv("LANGUAGE", unset = "")
   old_text <- gettext("{x0}, {x1}{tag(and_start)}", domain = "R-and")
 
   Sys.setenv("LANGUAGE" = language)
 
-  new_language <- Sys.getenv("LANGUAGE", unset = "en")
+  new_language <- Sys.getenv("LANGUAGE", unset = "")
   new_text <- gettext("{x0}, {x1}{tag(and_start)}", domain = "R-and")
 
   if (!identical(old_language, new_language) && identical(old_text, new_text)) {
@@ -66,7 +66,7 @@ set_language <- function(language) {
     bindtextdomain("R-base", base_dir)
   }
 
-  return(old_language)
+  return(invisible(old_language))
 }
 
 validate_language <- function(language, call = rlang::caller_env()) {
@@ -79,8 +79,4 @@ validate_language <- function(language, call = rlang::caller_env()) {
   }
 
   gsub("-", "_", language)
-}
-
-ascii <- function(x) {
-  stringi::stri_trans_tolower(stringi::stri_trans_general(x, "Latin-ASCII"))
 }
