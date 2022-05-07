@@ -74,7 +74,7 @@ conjoin <- function(
 
   if (!is.null(language)) {
     rlang::check_installed("withr", "to manually specify a language.")
-    withr::local_language(validate_lang(language))
+    suppressWarnings(withr::local_language(validate_lang(language)))
   }
 
   if (length(x) == 2) {
