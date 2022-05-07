@@ -2,8 +2,8 @@ pandoc: 2.14.2
 pkgdown: 2.0.3
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-05-07T18:22Z
+last_built: 2022-05-07T18:28Z
 urls:
-  reference: https://rossellhayes.github.io/and/reference
-  article: https://rossellhayes.github.io/and/articles
+  reference: https://and.rossellhayes.com/reference
+  article: https://and.rossellhayes.com/articles
 
