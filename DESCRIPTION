@@ -1,6 +1,6 @@
 Package: and
 Title: Construct Natural-Language Lists with Internationalization
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Authors@R: c(
     person("Alexander", "Rossell Hayes", , "alexander@rossellhayes.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-9412-0457")),
