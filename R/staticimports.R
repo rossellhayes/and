@@ -4,3 +4,11 @@
 # ======================================================================
 
 is_windows <- function() .Platform$OS.type == "windows"
+
+str_remove_all <- function(text, pattern) {
+  str_replace_all(text, pattern = pattern, replacement = "")
+}
+
+str_replace_all <- function(text, pattern, replacement) {
+  gsub(pattern = pattern, replacement = replacement, x = text, perl = TRUE)
+}
