@@ -229,6 +229,10 @@ test_that("special handling of accented vowels in Spanish, Italian, and Welsh", 
   expect_equal(and(c("u", "v", "ẁ"), language = "cy"), "u, v ac ẁ")
   expect_equal(and(c("u", "v", "ŵ"), language = "cy"), "u, v ac ŵ")
   expect_equal(and(c("u", "v", "ẅ"), language = "cy"), "u, v ac ẅ")
+  expect_equal(and(c("w", "x", "ý"), language = "cy"), "w, x ac ý")
+  expect_equal(and(c("w", "x", "ỳ"), language = "cy"), "w, x ac ỳ")
+  expect_equal(and(c("w", "x", "ŷ"), language = "cy"), "w, x ac ŷ")
+  expect_equal(and(c("w", "x", "ÿ"), language = "cy"), "w, x ac ÿ")
 
   expect_equal(and(c("g", "h", "í"), language = "es"), "g, h e í")
   expect_equal(and(c("w", "x", "ý"), language = "es"), "w, x e ý")

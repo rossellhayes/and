@@ -3,5 +3,7 @@ tag <- function(...) {
 }
 
 ascii <- function(x) {
-  tolower(iconv(x, to = "ASCII//TRANSLIT"))
+  x <- chartr(accented_vowels$unicode, accented_vowels$ascii, x)
+  x <- iconv(x, to = "ASCII//TRANSLIT")
+  tolower(x)
 }
