@@ -46,24 +46,24 @@
 #'
 #' @return Returns the pre-existing value of the `LANGUAGE` environment variable
 #' @export
-set_language <- function(language) {
-  language <- validate_language(language)
 
+# @staticimports pkg:staticimports
+#  is_windows
+
+set_language <- function(language) {
   old_language <- Sys.getenv("LANGUAGE", unset = "")
-  old_text <- gettext("{x0}, {x1}{tag(and_start)}", domain = "R-and")
+
+  language <- validate_language(language)
 
   Sys.setenv("LANGUAGE" = language)
 
-  new_language <- Sys.getenv("LANGUAGE", unset = "")
-  new_text <- gettext("{x0}, {x1}{tag(and_start)}", domain = "R-and")
-
-  if (!identical(old_language, new_language) && identical(old_text, new_text)) {
+  if (!is_windows()) {
     # On Linux, message translations are cached
     # Messages from the old language may be shown in the new language
-    # If this happens, invalidate the cache so new messages have to generate
-    base_dir <- bindtextdomain("R-base")
-    bindtextdomain("R-base", tempfile())
-    bindtextdomain("R-base", base_dir)
+    # This invalidates the cache so new messages have to generate
+    old_locale <- Sys.getlocale("LC_MESSAGES")
+    Sys.setlocale("LC_MESSAGES", "")
+    Sys.setlocale("LC_MESSAGES", old_locale)
   }
 
   return(invisible(old_language))
