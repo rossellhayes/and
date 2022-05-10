@@ -3,5 +3,5 @@ tag <- function(...) {
 }
 
 ascii <- function(x) {
-  stringi::stri_trans_tolower(stringi::stri_trans_general(x, "Latin-ASCII"))
+  tolower(iconv(x, to = "ASCII//TRANSLIT"))
 }

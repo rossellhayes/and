@@ -17,8 +17,7 @@ Depends:
     R (>= 2.10)
 Imports: 
     glue,
-    rlang,
-    stringi
+    rlang
 Suggests: 
     covr,
     knitr,
