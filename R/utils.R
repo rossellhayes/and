@@ -3,6 +3,14 @@ tag <- function(...) {
 }
 
 ascii <- function(x) {
+  if (rlang::is_installed("stringi")) {
+    return(
+      stringi::stri_trans_tolower(
+        stringi::stri_trans_general(x, "Any-Latin; Latin-ASCII")
+      )
+    )
+  }
+
   x <- tryCatch(
     chartr(accented_vowels$unicode, accented_vowels$ascii, x),
     error = function(e) {
