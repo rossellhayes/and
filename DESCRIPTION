@@ -21,6 +21,7 @@ Imports:
 Suggests: 
     covr,
     knitr,
+    mockery,
     stringi,
     testthat (>= 3.0.0),
     withr
