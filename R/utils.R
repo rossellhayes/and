@@ -22,7 +22,7 @@ ascii <- function(x) {
     )
   }
 
-  tolower(x)
+  tolower(ascii)
 }
 
 str_replace_all <- function(text, pattern, replacement) {
