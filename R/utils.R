@@ -11,15 +11,12 @@ ascii <- function(x) {
     )
   }
 
-  ascii <- iconv(x, to = "ASCII//TRANSLIT")
+  if (!is_windows()) {
+    ascii <- iconv(x, to = "ASCII//TRANSLIT")
+  }
 
-  if (is.na(ascii)) {
-    ascii <- tryCatch(
-      chartr(accented_vowels$unicode, accented_vowels$ascii, x),
-      error = function(e) {
-        str_replace_all(x, accented_vowels_regex)
-      }
-    )
+  if (is_windows() || is.na(ascii)) {
+    ascii <- str_replace_all(x, accented_vowels_regex)
   }
 
   tolower(ascii)
