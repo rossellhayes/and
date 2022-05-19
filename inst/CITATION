@@ -2,7 +2,7 @@ citHeader("To cite and in publications use:")
 
 citEntry(
   entry  = "Manual",
-  title  = "{and}: Construct Natural-Language Lists with Internationalization",
+  title  = "{and}: construct natural-language lists with internationalization",
   author = "Alexander {Rossell Hayes}",
   year   = 2022,
   url    = "https://and.rossellhayes.com/",
