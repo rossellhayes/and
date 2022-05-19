@@ -11,7 +11,7 @@
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions)
-[![](https://app.codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
+[![](https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
 <!-- [![Dependencies](https://tinyverse.netlify.com/badge/and)](https://cran.r-project.org/package=and) -->
 <!-- badges: end -->
 
@@ -103,12 +103,31 @@ environment variables? You can explicitly set the language using the
 
 ``` r
 and(names, language = "en_US")
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
+#> "" cannot be honored
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
+#> レポート要求は受け入れられません
 #> [1] "John, Paul, George, and Ringo"
 and(names, language = "en_GB")
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
+#> "" cannot be honored
+
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
+#> レポート要求は受け入れられません
 #> [1] "John, Paul, George and Ringo"
 and(names, language = "es")
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
+#> "" cannot be honored
+
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
+#> レポート要求は受け入れられません
 #> [1] "John, Paul, George y Ringo"
 and(names, language = "fr")
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la
+#> localisation à "" n'a pas pu être honorée
+
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
+#> レポート要求は受け入れられません
 #> [1] "John, Paul, George et Ringo"
 ```
 
