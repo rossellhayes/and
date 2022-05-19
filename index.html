@@ -136,12 +136,31 @@
 <p>Don’t want the language of you string to depend on the user’s environment variables? You can explicitly set the language using the <code>language</code> argument.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span>
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span>
+<span class="co">#&gt; "" cannot be honored</span>
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span>
+<span class="co">#&gt; レポート要求は受け入れられません</span>
 <span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span>
 <span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span>
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span>
+<span class="co">#&gt; "" cannot be honored</span>
+
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span>
+<span class="co">#&gt; レポート要求は受け入れられません</span>
 <span class="co">#&gt; [1] "John, Paul, George and Ringo"</span>
 <span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span>
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span>
+<span class="co">#&gt; "" cannot be honored</span>
+
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span>
+<span class="co">#&gt; レポート要求は受け入れられません</span>
 <span class="co">#&gt; [1] "John, Paul, George y Ringo"</span>
 <span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span>
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la</span>
+<span class="co">#&gt; localisation à "" n'a pas pu être honorée</span>
+
+<span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span>
+<span class="co">#&gt; レポート要求は受け入れられません</span>
 <span class="co">#&gt; [1] "John, Paul, George et Ringo"</span></code></pre></div>
 <hr>
 <p>Please note that <strong>and</strong> is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
@@ -187,7 +206,7 @@
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/and/actions" class="external-link"><img src="https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-<li><a href="https://app.codecov.io/gh/rossellhayes/and" class="external-link"><img src="https://app.codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg"></a></li>
+<li><a href="https://app.codecov.io/gh/rossellhayes/and" class="external-link"><img src="https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg"></a></li>
 </ul>
 </div>
 
