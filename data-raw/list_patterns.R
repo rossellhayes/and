@@ -158,25 +158,25 @@ list_glue_patterns <- list_patterns %>%
 list_glue_patterns[list_glue_patterns$language == "cy", ] <-
   list_glue_patterns[list_glue_patterns$language == "cy", ] %>%
   mutate(
-    and_end = "{x0} {if (grepl('^[^a-z0-9]*[aeiouwy]', ascii(x1))) 'ac' else 'a'} {x1}",
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*[aeiouwy]', normalize(x1))) 'ac' else 'a'} {x1}",
     and_2 = and_end
   )
 
 list_glue_patterns[list_glue_patterns$language == "es", ] <-
   list_glue_patterns[list_glue_patterns$language == "es", ] %>%
   mutate(
-    and_end = "{x0} {if (grepl('^[^a-z0-9]*h?[iy]', ascii(x1))) 'e' else 'y'} {x1}",
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*h?[iy]', normalize(x1))) 'e' else 'y'} {x1}",
     and_2 = and_end,
-    or_end = "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', ascii(x1))) 'u' else 'o'} {x1}",
+    or_end = "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', normalize(x1))) 'u' else 'o'} {x1}",
     or_2 = or_end
   )
 
 list_glue_patterns[list_glue_patterns$language == "it", ] <-
   list_glue_patterns[list_glue_patterns$language == "it", ] %>%
   mutate(
-    and_end = "{x0} {if (grepl('^[^a-z0-9]*h?e', ascii(x1))) 'ed' else 'e'} {x1}",
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*h?e', normalize(x1))) 'ed' else 'e'} {x1}",
     and_2 = and_end,
-    or_end = "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', ascii(x1))) 'od' else 'o'} {x1}",
+    or_end = "{x0} {if (grepl('^[^a-z0-9]*(h?o|8)', normalize(x1))) 'od' else 'o'} {x1}",
     or_2 = or_end
   )
 

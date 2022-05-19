@@ -2,7 +2,7 @@ tag <- function(...) {
   return("")
 }
 
-ascii <- function(x) {
+normalize <- function(x) {
   if (rlang::is_installed("stringi")) {
     return(
       stringi::stri_trans_tolower(
