@@ -3,26 +3,7 @@ tag <- function(...) {
 }
 
 ascii <- function(x) {
-  if (rlang::is_installed("stringi")) {
-    return(
-      stringi::stri_trans_tolower(
-        stringi::stri_trans_general(x, "Any-Latin; Latin-ASCII")
-      )
-    )
-  }
-
-  ascii <- iconv(x, to = "ASCII//TRANSLIT")
-
-  if (is.na(ascii)) {
-    ascii <- tryCatch(
-      chartr(accented_vowels$unicode, accented_vowels$ascii, x),
-      error = function(e) {
-        str_replace_all(x, accented_vowels_regex)
-      }
-    )
-  }
-
-  tolower(ascii)
+  tolower(normalize(x))
 }
 
 str_replace_all <- function(text, pattern, replacement) {

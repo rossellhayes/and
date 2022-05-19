@@ -7,7 +7,7 @@
 \alias{reprex-package}
 \title{and: Construct Natural-Language Lists with Internationalization}
 \description{
-\if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
 Construct language-aware lists in R. Make "and"-separated and "or"-separated lists that automatically conform to the user's R language settings.
 }

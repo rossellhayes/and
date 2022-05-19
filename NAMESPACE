@@ -3,3 +3,5 @@
 export(and)
 export(or)
 export(set_language)
+importFrom(Rcpp,sourceCpp)
+useDynLib(and, .registration = TRUE)

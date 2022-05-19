@@ -32,7 +32,9 @@ Changes the value of the \code{LANGUAGE} environment variable.
 Returns the value of the \code{LANGUAGE} environment variable before it
 was changed.
 This allows you to use the following structure to temporarily change
-the language:\if{html}{\out{<div class="sourceCode r">}}\preformatted{old_language <- set_language("es")
+the language:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{old_language <- set_language("es")
 on.exit(set_language(old_language))
 }\if{html}{\out{</div>}}
 }
