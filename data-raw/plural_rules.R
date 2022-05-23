@@ -18,5 +18,3 @@ plural_rules <- read_html("https://php-gettext.github.io/Languages/") %>%
     }
   ) %>%
   set_names(purrr::map_chr(., ~ .$language))
-
-usethis::use_data(plural_rules, overwrite = TRUE)
