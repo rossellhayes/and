@@ -59,7 +59,7 @@ or <- function(x, ..., language = NULL) {
   )
 }
 
-# @staticimports pkg:staticimports
+# @staticimports pkg:stringstatic
 #  str_remove_all
 
 conjoin <- function(
