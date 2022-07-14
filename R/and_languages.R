@@ -1,13 +1,8 @@
 #' Supported languages
 #'
-#' ```{r echo = FALSE}
-#' knitr::kable(
-#'   and_languages,
-#'   col.names = c("**Language**", "**Code**", "**Examples**", "", "", "")
-#' )
-#' ```
+#' A list of supported languages and examples of their usage.
 #'
-#' @format A data frame with 3 variables:
+#' @format A data frame with 6 variables:
 #' \describe{
 #'   \item{language}{The name of the language, possibly with a territory in parentheses}
 #'   \item{code}{The language code}

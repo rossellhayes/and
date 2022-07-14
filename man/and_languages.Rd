@@ -5,7 +5,7 @@
 \alias{and_languages}
 \title{Supported languages}
 \format{
-A data frame with 3 variables:
+A data frame with 6 variables:
 \describe{
 \item{language}{The name of the language, possibly with a territory in parentheses}
 \item{code}{The language code}
@@ -23,103 +23,6 @@ Language data is derived from the
 and_languages
 }
 \description{
-\tabular{llllll}{
-   \strong{Language} \tab \strong{Code} \tab \strong{Examples} \tab  \tab  \tab  \cr
-   Afrikaans \tab af \tab 1 en 2 \tab 1, 2 en 3 \tab 1 of 2 \tab 1, 2 of 3 \cr
-   Amharic \tab am \tab 1 እና 2 \tab 1፣ 2, እና 3 \tab 1 ወይም 2﻿ \tab 1፣ 2፣ ወይም 3 \cr
-   Arabic \tab ar \tab 1 و2 \tab 1 و2 و3 \tab 1 أو 2 \tab 1 أو 2 أو 3 \cr
-   Assamese \tab as \tab 1 আৰু 2 \tab 1, 2 আৰু 3 \tab 1 বা 2 \tab 1, 2 বা 3 \cr
-   Azerbaijani \tab az \tab 1 və 2 \tab 1, 2 və 3 \tab 1 yaxud 2 \tab 1, 2, yaxud 3 \cr
-   Belarusian \tab be \tab 1 і 2 \tab 1, 2 і 3 \tab 1 ці 2 \tab 1, 2 ці 3 \cr
-   Bulgarian \tab bg \tab 1 и 2 \tab 1, 2 и 3 \tab 1 или 2 \tab 1, 2 или 3 \cr
-   Bangla \tab bn \tab 1 এবং 2 \tab 1, 2 এবং 3 \tab 1 বা 2 \tab 1, 2, বা 3 \cr
-   Bosnian \tab bs \tab 1 i 2 \tab 1, 2 i 3 \tab 1 ili 2 \tab 1, 2 ili 3 \cr
-   Catalan \tab ca \tab 1 i 2 \tab 1, 2 i 3 \tab 1 o 2 \tab 1, 2 o 3 \cr
-   Czech \tab cs \tab 1 a 2 \tab 1, 2 a 3 \tab 1 nebo 2 \tab 1, 2 nebo 3 \cr
-   Welsh \tab cy \tab 1 a 2 \tab 1, 2 a 3 \tab 1 neu 2 \tab 1, 2 neu 3 \cr
-   Danish \tab da \tab 1 og 2 \tab 1, 2 og 3 \tab 1 eller 2 \tab 1, 2 eller 3 \cr
-   German \tab de \tab 1 und 2 \tab 1, 2 und 3 \tab 1 oder 2 \tab 1, 2 oder 3 \cr
-   Greek \tab el \tab 1 και 2 \tab 1, 2 και 3 \tab 1 ή 2 \tab 1, 2 ή 3 \cr
-   English \tab en \tab 1 and 2 \tab 1, 2 and 3 \tab 1 or 2 \tab 1, 2 or 3 \cr
-   English (United Arab Emirates) \tab en_AE \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (American Samoa) \tab en_AS \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (Burundi) \tab en_BI \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (Guam) \tab en_GU \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (Marshall Islands) \tab en_MH \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (Northern Mariana Islands) \tab en_MP \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (Philippines) \tab en_PH \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (Puerto Rico) \tab en_PR \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (U.S. Outlying Islands) \tab en_UM \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (United States) \tab en_US \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   English (U.S. Virgin Islands) \tab en_VI \tab 1 and 2 \tab 1, 2, and 3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-   Spanish \tab es \tab 1 y 2 \tab 1, 2 y 3 \tab 1 o 2 \tab 1, 2 o 3 \cr
-   Estonian \tab et \tab 1 ja 2 \tab 1, 2 ja 3 \tab 1 või 2 \tab 1, 2 või 3 \cr
-   Basque \tab eu \tab 1 eta 2 \tab 1, 2 eta 3 \tab 1 edo 2 \tab 1, 2 edo 3 \cr
-   Persian \tab fa \tab 1 و 2 \tab 1،‏ 2، و 3 \tab 1 یا 2 \tab 1،‏ 2، یا 3 \cr
-   Finnish \tab fi \tab 1 ja 2 \tab 1, 2 ja 3 \tab 1 tai 2 \tab 1, 2 tai 3 \cr
-   Filipino \tab fil \tab 1 at 2 \tab 1, 2, at 3 \tab 1 o 2 \tab 1, 2, o 3 \cr
-   French \tab fr \tab 1 et 2 \tab 1, 2 et 3 \tab 1 ou 2 \tab 1, 2 ou 3 \cr
-   Irish \tab ga \tab 1 agus 2 \tab 1, 2 agus 3 \tab 1 nó 2 \tab 1, 2, nó 3 \cr
-   Galician \tab gl \tab 1 e 2 \tab 1, 2 e 3 \tab 1 ou 2 \tab 1, 2 ou 3 \cr
-   Gujarati \tab gu \tab 1 અને 2 \tab 1, 2 અને 3 \tab 1 અથવા 2 \tab 1, 2, અથવા 3 \cr
-   Hebrew \tab he \tab 1 ו2 \tab 1, 2 ו3 \tab 1 או 2 \tab 1, 2, או 3 \cr
-   Hindi \tab hi \tab 1 और 2 \tab 1, 2, और 3 \tab 1 या 2 \tab 1, 2 या 3 \cr
-   Croatian \tab hr \tab 1 i 2 \tab 1, 2 i 3 \tab 1 ili 2 \tab 1, 2 ili 3 \cr
-   Hungarian \tab hu \tab 1 és 2 \tab 1, 2 és 3 \tab 1 vagy 2 \tab 1, 2 vagy 3 \cr
-   Armenian \tab hy \tab 1 և 2 \tab 1, 2 և 3 \tab 1 կամ 2 \tab 1, 2 կամ 3 \cr
-   Indonesian \tab id \tab 1 dan 2 \tab 1, 2, dan 3 \tab 1 atau 2 \tab 1, 2, atau 3 \cr
-   Icelandic \tab is \tab 1 og 2 \tab 1, 2 og 3 \tab 1 eða 2 \tab 1, 2 eða 3 \cr
-   Italian \tab it \tab 1 e 2 \tab 1, 2 e 3 \tab 1 o 2 \tab 1, 2 o 3 \cr
-   Japanese \tab ja \tab 1、2 \tab 1、2、3 \tab 1または2 \tab 1、2、または3 \cr
-   Javanese \tab jv \tab 1 lan 2 \tab 1, 2, lan 3 \tab 1 utowo 2 \tab 1, 2, utowo 3 \cr
-   Georgian \tab ka \tab 1 და 2 \tab 1, 2 და 3 \tab 1 ან 2 \tab 1, 2 ან 3 \cr
-   Kazakh \tab kk \tab 1 және 2 \tab 1, 2, 3 \tab 1 не 2 \tab 1, 2, не болмаса 3 \cr
-   Khmer \tab km \tab 1 និង​2 \tab 1, 2 និង 3 \tab 1 ឬ 2 \tab 1, 2 ឬ 3 \cr
-   Kannada \tab kn \tab 1 ಮತ್ತು 2 \tab 1, 2, ಮತ್ತು 3 \tab 1 ಅಥವಾ 2 \tab 1, 2, ಅಥವಾ 3 \cr
-   Korean \tab ko \tab 1 및 2 \tab 1, 2 및 3 \tab 1 또는 2 \tab 1, 2 또는 3 \cr
-   Kyrgyz \tab ky \tab 1 жана 2 \tab 1, 2 жана 3 \tab 1 же 2 \tab 1, 2 же 3 \cr
-   Lao \tab lo \tab 1 ແລະ 2 \tab 1, 2, 3 \tab 1 ຫຼື 2 \tab 1, 2 ຫຼື 3 \cr
-   Lithuanian \tab lt \tab 1 ir 2 \tab 1, 2 ir 3 \tab 1 ar 2 \tab 1, 2 ar 3 \cr
-   Latvian \tab lv \tab 1 un 2 \tab 1, 2 un 3 \tab 1 vai 2 \tab 1, 2 vai 3 \cr
-   Macedonian \tab mk \tab 1 и 2 \tab 1, 2 и 3 \tab 1 или 2 \tab 1, 2 или 3 \cr
-   Malayalam \tab ml \tab 1 കൂടാതെ 2 \tab 1, 2, 3 എന്നിവ \tab 1 അല്ലെങ്കിൽ 2 \tab 1, 2, അല്ലെങ്കിൽ 3 \cr
-   Mongolian \tab mn \tab 1, 2 \tab 1, 2, 3 \tab 1 эсвэл 2 \tab 1, 2, 3 зэргийн аль нэг \cr
-   Marathi \tab mr \tab 1 आणि 2 \tab 1, 2 आणि 3 \tab 1 किंवा 2 \tab 1, 2, किंवा 3 \cr
-   Malay \tab ms \tab 1 dan 2 \tab 1, 2 dan 3 \tab 1 atau 2 \tab 1, 2, atau 3 \cr
-   Burmese \tab my \tab 1နှင့် 2 \tab 1 - 2နှင့် 3 \tab 1 သို့မဟုတ် 2 \tab 1 - 2 သို့မဟုတ် 3 \cr
-   Norwegian Bokmål \tab nb \tab 1 og 2 \tab 1, 2 og 3 \tab 1 eller 2 \tab 1, 2 eller 3 \cr
-   Nepali \tab ne \tab 1 र 2 \tab 1,2 र 3 \tab 1 वा 2 \tab 1, 2, वा 3 \cr
-   Dutch \tab nl \tab 1 en 2 \tab 1, 2 en 3 \tab 1 of 2 \tab 1, 2 of 3 \cr
-   Norwegian Nynorsk \tab nn \tab 1 og 2 \tab 1, 2 og 3 \tab 1 eller 2 \tab 1, 2 eller 3 \cr
-   Norwegian \tab no \tab 1 og 2 \tab 1, 2 og 3 \tab 1 eller 2 \tab 1, 2 eller 3 \cr
-   Odia \tab or \tab 1 ଓ 2 \tab 1, 2, ଓ 3 \tab 1 କିମ୍ବା 2 \tab 1, 2 କିମ୍ବା 3 \cr
-   Punjabi \tab pa \tab 1 ਅਤੇ 2 \tab 1, 2 ਅਤੇ 3 \tab 1 ਜਾਂ 2 \tab 1, 2 ਜਾਂ 3 \cr
-   Polish \tab pl \tab 1 i 2 \tab 1, 2 i 3 \tab 1 lub 2 \tab 1, 2 lub 3 \cr
-   Pashto \tab ps \tab 1 او 2 \tab 1، 2، او 3 \tab 1 or 2 \tab 1, 2, یا 3 \cr
-   Portuguese \tab pt \tab 1 e 2 \tab 1, 2 e 3 \tab 1 ou 2 \tab 1, 2 ou 3 \cr
-   Romanian \tab ro \tab 1 și 2 \tab 1, 2 și 3 \tab 1 sau 2 \tab 1, 2 sau 3 \cr
-   Russian \tab ru \tab 1 и 2 \tab 1, 2 и 3 \tab 1 или 2 \tab 1, 2 или 3 \cr
-   Sindhi \tab sd \tab 1 ۽ 2 \tab 1, 2، ۽ 3 \tab 1 يا 2 \tab 1, 2, يا 3 \cr
-   Sinhala \tab si \tab 1 සහ 2 \tab 1, 2, සහ 3 \tab 1 හෝ 2 \tab 1, 2, හෝ 3 \cr
-   Slovak \tab sk \tab 1 a 2 \tab 1, 2 a 3 \tab 1 alebo 2 \tab 1, 2 alebo 3 \cr
-   Slovenian \tab sl \tab 1 in 2 \tab 1, 2 in 3 \tab 1 ali 2 \tab 1, 2 ali 3 \cr
-   Somali \tab so \tab 1 iyo 2 \tab 1, 2 iyo 3 \tab 1 ama 2 \tab 1, 2 ama 3 \cr
-   Albanian \tab sq \tab 1 dhe 2 \tab 1, 2 dhe 3 \tab 1 ose 2 \tab 1, 2 ose 3 \cr
-   Serbian \tab sr \tab 1 и 2 \tab 1, 2 и 3 \tab 1 или 2 \tab 1, 2 или 3 \cr
-   Swedish \tab sv \tab 1 och 2 \tab 1, 2 och 3 \tab 1 eller 2 \tab 1, 2 eller 3 \cr
-   Swahili \tab sw \tab 1 na 2 \tab 1, 2 na 3 \tab 1 au 2 \tab 1, 2 au 3 \cr
-   Tamil \tab ta \tab 1 மற்றும் 2 \tab 1, 2 மற்றும் 3 \tab 1 அல்லது 2 \tab 1, 2 அல்லது 3 \cr
-   Telugu \tab te \tab 1 మరియు 2 \tab 1, 2 మరియు 3 \tab 1 లేదా 2 \tab 1, 2 లేదా 3 \cr
-   Thai \tab th \tab 1และ2 \tab 1 2 และ3 \tab 1 หรือ 2 \tab 1, 2 หรือ 3 \cr
-   Turkmen \tab tk \tab 1 we 2 \tab 1, 2 we 3 \tab 1 ýa-da 2 \tab 1, 2 ýa-da 3 \cr
-   Turkish \tab tr \tab 1 ve 2 \tab 1, 2 ve 3 \tab 1 veya 2 \tab 1, 2 veya 3 \cr
-   Ukrainian \tab uk \tab 1 і 2 \tab 1, 2 і 3 \tab 1 або 2 \tab 1, 2 або 3 \cr
-   Urdu \tab ur \tab 1 اور 2 \tab 1، 2، اور 3 \tab 1 یا 2 \tab 1، 2، یا 3 \cr
-   Uzbek \tab uz \tab 1 va 2 \tab 1, 2 va 3 \tab 1 yoki 2 \tab 1, 2 yoki 3 \cr
-   Vietnamese \tab vi \tab 1 và 2 \tab 1, 2 và 3 \tab 1 hoặc 2 \tab 1, 2 hoặc 3 \cr
-   Cantonese \tab yue \tab 1同2 \tab 1、2同3 \tab 1 或 2 \tab 1、2 或 3 \cr
-   Chinese \tab zh \tab 1和2 \tab 1、2和3 \tab 1或2 \tab 1、2或3 \cr
-   Zulu \tab zu \tab 1 ne-2 \tab 1, 2, ne-3 \tab 1 or 2 \tab 1, 2, or 3 \cr
-}
+A list of supported languages and examples of their usage.
 }
 \keyword{datasets}
