@@ -13,7 +13,6 @@
 #' ```
 #'
 #' @examples
-#' \dontrun{
 #' # Change language to Korean
 #' set_language("ko")
 #'
@@ -25,8 +24,7 @@
 #'
 #' # Temporarily set the language to Cantonese
 #' old_language <- set_language("yue")
-#' on.exit(set_language(old_language))
-#' }
+#' set_language(old_language)
 #'
 #' @param language A language code.
 #'

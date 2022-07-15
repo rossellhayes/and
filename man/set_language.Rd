@@ -39,7 +39,6 @@ on.exit(set_language(old_language))
 }\if{html}{\out{</div>}}
 }
 \examples{
-\dontrun{
 # Change language to Korean
 set_language("ko")
 
@@ -51,7 +50,6 @@ set_language("zxx")
 
 # Temporarily set the language to Cantonese
 old_language <- set_language("yue")
-on.exit(set_language(old_language))
-}
+set_language(old_language)
 
 }
