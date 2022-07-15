@@ -1,3 +1,9 @@
+# Reupload
+This reupload fixes the following issues:
+- Removed unquoted software names from DESCRIPTION
+- Removed \dontrun{} from examples
+- Removed on.exit() from examples
+
 # Test environments
 * Local R installation, R 4.2.0 on macOS 12.4
 * GitHub Actions
@@ -10,6 +16,7 @@
 * win-builder
     * R devel
     * R 4.2.1
+    * R 4.1.3
 * R-hub
     * R 4.2.0 on macOS 10.13.6 and Apple Silicon (M1) macOS 11.6
 
