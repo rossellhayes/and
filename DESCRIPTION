@@ -4,12 +4,12 @@ Version: 0.1.0
 Authors@R: c(
     person("Alexander", "Rossell Hayes", , "alexander@rossellhayes.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-9412-0457")),
-    person(, "Unicode, Inc.", role = c("dtc"),
+    person(, "Unicode, Inc.", role = "dtc",
            comment = "Language data")
   )
-Description: Construct language-aware lists in R. Make "and"-separated and
-    "or"-separated lists that automatically conform to the user's R
-    language settings.
+Description: Construct language-aware lists. Make "and"-separated and
+    "or"-separated lists that automatically conform to the user's language
+    settings.
 License: MIT + file LICENSE
 URL: http://and.rossellhayes.com, https://github.com/rossellhayes/and
 BugReports: https://github.com/rossellhayes/and/issues
