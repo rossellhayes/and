@@ -21,7 +21,10 @@ For example, if there are no specific translations for Canadian French,
 \code{"fr_CA"} will fall back to \code{"fr"}.
 
 If a language is specified but there is no translation for that language,
-translations generally fall back to English.}
+translations generally fall back to English.
+
+If \code{language} is an empty string or \code{NULL}, the \code{LANGUAGE} environment
+variable is unset.}
 }
 \value{
 Returns the pre-existing value of the \code{LANGUAGE} environment variable
@@ -45,11 +48,14 @@ set_language("ko")
 # Change language to Mexican Spanish, which may fall back to "es"
 set_language("es_MX")
 
-# Change to an invalid language, which generally falls back to English
-set_language("zxx")
-
 # Temporarily set the language to Cantonese
 old_language <- set_language("yue")
 set_language(old_language)
+
+# Change to an invalid language, which generally falls back to English
+set_language("zxx")
+
+# Unset the language environment variable
+set_language(NULL)
 
 }

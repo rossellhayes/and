@@ -316,8 +316,23 @@ test_that("invalid language falls back to English", {
   )
 })
 
+test_that("unset language", {
+  old_language <- set_language("en")
+  expect_equal(Sys.getenv("LANGUAGE"), "en")
+
+  set_language("")
+  expect_equal(Sys.getenv("LANGUAGE", "UNSET"), "UNSET")
+
+  set_language(NULL)
+  expect_equal(Sys.getenv("LANGUAGE", "UNSET"), "UNSET")
+
+  set_language(character(0))
+  expect_equal(Sys.getenv("LANGUAGE", "UNSET"), "UNSET")
+
+  set_language(old_language)
+})
+
 test_that("error if language is not a string", {
   expect_error(and(1:4, language = 1), class = "and_invalid_language")
-  expect_error(and(1:4, language = character(0)), class = "and_invalid_language")
   expect_error(and(1:4, language = c("en", "fr")), class = "and_invalid_language")
 })
