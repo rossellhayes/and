@@ -100,8 +100,7 @@ translations generally fall back to English.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># Change language to Korean</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Change language to Korean</span></span></span>
 <span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="st">"ko"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Change language to Mexican Spanish, which may fall back to "es"</span></span></span>
@@ -112,8 +111,7 @@ translations generally fall back to English.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Temporarily set the language to Cantonese</span></span></span>
 <span class="r-in"><span><span class="va">old_language</span> <span class="op">&lt;-</span> <span class="fu">set_language</span><span class="op">(</span><span class="st">"yue"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit</a></span><span class="op">(</span><span class="fu">set_language</span><span class="op">(</span><span class="va">old_language</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="va">old_language</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
