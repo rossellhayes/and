@@ -88,7 +88,9 @@ territory, translations fall back to the general language.
 For example, if there are no specific translations for Canadian French,
 <code>"fr_CA"</code> will fall back to <code>"fr"</code>.</p>
 <p>If a language is specified but there is no translation for that language,
-translations generally fall back to English.</p></dd>
+translations generally fall back to English.</p>
+<p>If <code>language</code> is an empty string or <code>NULL</code>, the <code>LANGUAGE</code> environment
+variable is unset.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -102,16 +104,24 @@ translations generally fall back to English.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Change language to Korean</span></span></span>
 <span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="st">"ko"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nchar(langauge):</span> object 'langauge' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Change language to Mexican Spanish, which may fall back to "es"</span></span></span>
 <span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="st">"es_MX"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Change to an invalid language, which generally falls back to English</span></span></span>
-<span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="st">"zxx"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nchar(langauge):</span> object 'langauge' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Temporarily set the language to Cantonese</span></span></span>
 <span class="r-in"><span><span class="va">old_language</span> <span class="op">&lt;-</span> <span class="fu">set_language</span><span class="op">(</span><span class="st">"yue"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nchar(langauge):</span> object 'langauge' not found</span>
 <span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="va">old_language</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in set_language(old_language):</span> object 'old_language' not found</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Change to an invalid language, which generally falls back to English</span></span></span>
+<span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="st">"zxx"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nchar(langauge):</span> object 'langauge' not found</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Unset the language environment variable</span></span></span>
+<span class="r-in"><span><span class="fu">set_language</span><span class="op">(</span><span class="cn">NULL</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
