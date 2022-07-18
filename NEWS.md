@@ -1,3 +1,5 @@
+# and (development version)
+
 # and 0.1.1
 
 * `set_language()` can now unset the `LANGUAGE` environment variable if its input is an empty string (`""`) or has length 0 (e.g. `NULL`).
