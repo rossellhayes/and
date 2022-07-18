@@ -20,25 +20,25 @@ library(badger)
 # and <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
-<!-- `r badge_cran_release(color = "brightgreen")` -->
-`r badge_lifecycle("experimental")`
+`r badge_cran_release(color = "brightgreen")`
+`r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 [![](https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
-<!-- `r badge_dependencies()` -->
+`r badge_dependencies()`
 <!-- badges: end -->
 
 **and** constructs language-aware lists in R. It extends the functionality of functions like `knitr::combine_words()` and `glue::glue_collapse()` to make "and"-separated and "or"-separated lists that automatically conform to the user's R language settings.
 
 ## Installation
 
-<!-- You can install the released version of **and** from [CRAN](https://CRAN.R-project.org) with: -->
+You can install the released version of **and** from [CRAN](https://cran.r-project.org/web/packages/and/index.html) with:
 
-<!-- ``` {r eval = FALSE} -->
-<!-- install.packages("and") -->
-<!-- ``` -->
+``` {r eval = FALSE}
+install.packages("and")
+```
 
-You can install the development version of **and** from GitHub with:
+or the development version of **and** from [GitHub](https://github.com/rossellhayes/and) with:
 
 ``` {r eval = FALSE}
 # install.packages("pak")

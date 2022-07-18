@@ -4,15 +4,15 @@
 # and <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
 
 <!-- badges: start -->
-<!-- [![](https://www.r-pkg.org/badges/version/and?color=brightgreen)](https://cran.r-project.org/package=and) -->
 
-[![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![](https://www.r-pkg.org/badges/version/and?color=brightgreen)](https://cran.r-project.org/package=and)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
 [![R build
 status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions)
 [![](https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
-<!-- [![Dependencies](https://tinyverse.netlify.com/badge/and)](https://cran.r-project.org/package=and) -->
+[![Dependencies](https://tinyverse.netlify.com/badge/and)](https://cran.r-project.org/package=and)
 <!-- badges: end -->
 
 **and** constructs language-aware lists in R. It extends the
@@ -22,12 +22,15 @@ that automatically conform to the user’s R language settings.
 
 ## Installation
 
-<!-- You can install the released version of **and** from [CRAN](https://CRAN.R-project.org) with: -->
-<!-- ``` {r eval = FALSE} -->
-<!-- install.packages("and") -->
-<!-- ``` -->
+You can install the released version of **and** from
+[CRAN](https://cran.r-project.org/web/packages/and/index.html) with:
 
-You can install the development version of **and** from GitHub with:
+``` r
+install.packages("and")
+```
+
+or the development version of **and** from
+[GitHub](https://github.com/rossellhayes/and) with:
 
 ``` r
 # install.packages("pak")
@@ -105,29 +108,18 @@ environment variables? You can explicitly set the language using the
 and(names, language = "en_US")
 #> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
 #> "" cannot be honored
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
-#> レポート要求は受け入れられません
 #> [1] "John, Paul, George, and Ringo"
 and(names, language = "en_GB")
 #> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
 #> "" cannot be honored
-
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
-#> レポート要求は受け入れられません
 #> [1] "John, Paul, George and Ringo"
 and(names, language = "es")
 #> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
 #> "" cannot be honored
-
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
-#> レポート要求は受け入れられません
 #> [1] "John, Paul, George y Ringo"
 and(names, language = "fr")
 #> Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la
 #> localisation à "" n'a pas pu être honorée
-
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の
-#> レポート要求は受け入れられません
 #> [1] "John, Paul, George et Ringo"
 ```
 
