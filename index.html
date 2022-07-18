@@ -37,7 +37,7 @@
     
     <a class="navbar-brand me-2" href="index.html">and</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,13 +76,16 @@
 <img src="logo.png" class="logo" alt=""><h1 id="and-">and <a class="anchor" aria-label="anchor" href="#and-"></a>
 </h1>
 </div>
-<!-- badges: start --><!-- [![](https://www.r-pkg.org/badges/version/and?color=brightgreen)](https://cran.r-project.org/package=and) -->
+<!-- badges: start -->
 <p><strong>and</strong> constructs language-aware lists in R. It extends the functionality of functions like <code><a href="https://rdrr.io/pkg/knitr/man/combine_words.html" class="external-link">knitr::combine_words()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue_collapse.html" class="external-link">glue::glue_collapse()</a></code> to make “and”-separated and “or”-separated lists that automatically conform to the user’s R language settings.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<!-- You can install the released version of **and** from [CRAN](https://CRAN.R-project.org) with: --><!-- ``` {r eval = FALSE} --><!-- install.packages("and") --><!-- ``` --><p>You can install the development version of <strong>and</strong> from GitHub with:</p>
+<p>You can install the released version of <strong>and</strong> from <a href="https://cran.r-project.org/web/packages/and/index.html" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"and"</span><span class="op">)</span></span></code></pre></div>
+<p>or the development version of <strong>and</strong> from <a href="https://github.com/rossellhayes/and" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"rossellhayes/and"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -90,17 +93,17 @@
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p><code><a href="reference/and.html">and()</a></code> creates “and”-separated lists from vectors.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"John"</span>, <span class="st">"Paul"</span>, <span class="st">"George"</span>, <span class="st">"Ringo"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span></code></pre></div>
 <p>But the Oxford comma is less common in other varieties of English, what happens if I change my R language to British English?</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span></code></pre></div>
 <p>What about other languages?</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span>
@@ -114,7 +117,7 @@
 <h3 id="handling-the-nuances">Handling the nuances<a class="anchor" aria-label="anchor" href="#handling-the-nuances"></a>
 </h3>
 <p>Creating a list is not as simple as putting a different word between the last two items. For example, in Spanish, the word for “and” changes if the next word starts with an <em>i</em> or <em>y</em>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">princess_bride</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Vizzini"</span>, <span class="st">"Fezzik"</span>, <span class="st">"Inigo Montoya"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">princess_bride</span><span class="op">)</span></span>
@@ -124,7 +127,7 @@
 <h3 id="or-separated-lists">“or”-separated lists<a class="anchor" aria-label="anchor" href="#or-separated-lists"></a>
 </h3>
 <p>Everything <code><a href="reference/and.html">and()</a></code> can do <code><a href="reference/and.html">or()</a></code> can do better. Just use <code><a href="reference/and.html">or()</a></code> to create “or”-separated lists with all the same contextual awareness.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"win"</span>, <span class="st">"lose"</span>, <span class="st">"draw"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">or</a></span><span class="op">(</span><span class="va">outcomes</span><span class="op">)</span></span>
@@ -137,33 +140,22 @@
 <h3 id="hardcoding-language">Hardcoding language<a class="anchor" aria-label="anchor" href="#hardcoding-language"></a>
 </h3>
 <p>Don’t want the language of you string to depend on the user’s environment variables? You can explicitly set the language using the <code>language</code> argument.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span></span>
 <span><span class="co">#&gt; "" cannot be honored</span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span></span>
-<span><span class="co">#&gt; レポート要求は受け入れられません</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span></span>
 <span><span class="co">#&gt; "" cannot be honored</span></span>
-<span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span></span>
-<span><span class="co">#&gt; レポート要求は受け入れられません</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span></span>
 <span><span class="co">#&gt; "" cannot be honored</span></span>
-<span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span></span>
-<span><span class="co">#&gt; レポート要求は受け入れられません</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la</span></span>
 <span><span class="co">#&gt; localisation à "" n'a pas pu être honorée</span></span>
-<span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): ロケールを "" に設定せよとの OS の</span></span>
-<span><span class="co">#&gt; レポート要求は受け入れられません</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George et Ringo"</span></span></code></pre></div>
 <hr>
 <p>Please note that <strong>and</strong> is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
@@ -206,10 +198,12 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg"></a></li>
+<li><a href="https://cran.r-project.org/package=and" class="external-link"><img src="https://www.r-pkg.org/badges/version/and?color=brightgreen"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/and/actions" class="external-link"><img src="https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://app.codecov.io/gh/rossellhayes/and" class="external-link"><img src="https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg"></a></li>
+<li><a href="https://cran.r-project.org/package=and" class="external-link"><img src="https://tinyverse.netlify.com/badge/and" alt="Dependencies"></a></li>
 </ul>
 </div>
 
