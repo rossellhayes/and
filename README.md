@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![](https://www.r-pkg.org/badges/version/and?color=brightgreen)](https://cran.r-project.org/package=and)
+[![r-universe status
+badge](https://rossellhayes.r-universe.dev/badges/and)](https://rossellhayes.r-universe.dev/ui#package:and)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)

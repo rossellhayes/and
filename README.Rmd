@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 
 library(and)
-# pak::pkg_install("GuangchuangYu/badger")
+# pak::pkg_install("GuangchuangYu/badger#42")
 library(badger)
 ```
 
@@ -21,6 +21,7 @@ library(badger)
 
 <!-- badges: start -->
 `r badge_cran_release(color = "brightgreen")`
+`r badge_runiverse()`
 `r badge_lifecycle("stable")`
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
