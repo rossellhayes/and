@@ -2,11 +2,8 @@ tag <- function(...) {
   return("")
 }
 
-# @staticimports pkg:staticimports
-#  is_windows
-
 # @staticimports pkg:stringstatic
-#  str_replace_all
+#  str_replace_all str_detect
 
 normalize <- function(x) {
   if (rlang::is_installed("stringi")) {
@@ -17,13 +14,13 @@ normalize <- function(x) {
     )
   }
 
-  if (!is_windows()) {
-    ascii <- iconv(x, to = "ASCII//TRANSLIT")
+  if (has_utf8_support()) {
+    return(tolower(iconv(x, to = "ASCII//TRANSLIT")))
   }
 
-  if (is_windows() || is.na(ascii)) {
-    ascii <- str_replace_all(x, accented_vowels_regex)
-  }
+  str_replace_all(x, accented_vowels_regex)
+}
 
-  tolower(ascii)
+has_utf8_support <- function() {
+  isTRUE(l10n_info()[["UTF-8"]])
 }
