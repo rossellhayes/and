@@ -1,5 +1,8 @@
 # @staticimports pkg:stringstatic
-#  str_replace_all str_detect
+#  str_replace_all
+
+# @staticimports pkg:staticimports
+#  is_windows
 
 normalize <- function(x) {
   if (rlang::is_installed("stringi")) {
@@ -10,7 +13,7 @@ normalize <- function(x) {
     )
   }
 
-  if (has_utf8_support()) {
+  if (!is_windows() && has_utf8_support()) {
     return(tolower(iconv(x, to = "ASCII//TRANSLIT")))
   }
 
