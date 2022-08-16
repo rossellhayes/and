@@ -1,4 +1,4 @@
-# and (development version)
+# and 0.1.2
 
 * Add support for Unix machines without UTF-8 support.
 
