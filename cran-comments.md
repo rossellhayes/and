@@ -1,11 +1,5 @@
-# Reupload
-This reupload fixes the following issues:
-- Removed unquoted software names from DESCRIPTION
-- Removed \dontrun{} from examples
-- Removed on.exit() from examples
-
 # Test environments
-* Local R installation, R 4.2.0 on macOS 12.4
+* Local R installation, R 4.2.0 on macOS 12.5
 * GitHub Actions
     * R devel on Ubuntu 18.04
     * R 4.2.0 on Ubuntu 18.04, Windows Server 2022 and macOS 11.6.5
@@ -18,10 +12,10 @@ This reupload fixes the following issues:
     * R 4.2.1
     * R 4.1.3
 * R-hub
+    * R devel on Debian with ISO-8859-15 locale
     * R 4.2.0 on macOS 10.13.6 and Apple Silicon (M1) macOS 11.6
+    * R 4.1.3 on Windows Server 2022
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+0 errors | 0 warnings | 0 note
