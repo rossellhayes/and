@@ -33,7 +33,7 @@ library(badger)
 
 ## Installation
 
-You can install the released version of **and** from [CRAN](https://cran.r-project.org/web/packages/and/index.html) with:
+You can install the released version of **and** from [CRAN](https://cran.r-project.org/package=and) with:
 
 ``` {r eval = FALSE}
 install.packages("and")

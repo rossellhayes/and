@@ -1,3 +1,6 @@
+# Resubmission
+* This resubmission ensures all CRAN URLs are in canonical form
+
 # Test environments
 * Local R installation, R 4.2.0 on macOS 12.5
 * GitHub Actions

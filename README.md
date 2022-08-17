@@ -25,7 +25,7 @@ that automatically conform to the user’s R language settings.
 ## Installation
 
 You can install the released version of **and** from
-[CRAN](https://cran.r-project.org/web/packages/and/index.html) with:
+[CRAN](https://cran.r-project.org/package=and) with:
 
 ``` r
 install.packages("and")
