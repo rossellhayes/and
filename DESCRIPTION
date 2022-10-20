@@ -11,7 +11,7 @@ Description: Construct language-aware lists. Make "and"-separated and
     "or"-separated lists that automatically conform to the user's language
     settings.
 License: MIT + file LICENSE
-URL: http://and.rossellhayes.com, https://github.com/rossellhayes/and
+URL: https://and.rossellhayes.com, https://github.com/rossellhayes/and
 BugReports: https://github.com/rossellhayes/and/issues
 Depends: 
     R (>= 2.10)
@@ -29,4 +29,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
