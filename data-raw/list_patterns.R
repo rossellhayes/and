@@ -28,7 +28,7 @@ archive::archive_extract(
     "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/territories.json",
     archive_files %>%
       str_subset(
-        "cldr-json-main/cldr-json/cldr-misc-modern/main/.+/listPatterns\\.json"
+        "cldr-json-main/cldr-json/cldr-misc-full/main/.+/listPatterns\\.json"
       )
   )
 )
@@ -52,7 +52,7 @@ territories <- fs::path(
   tibble::enframe()
 
 list_pattern_files <- fs::dir_ls(
-  path(tempdir, "cldr-json-main", "cldr-json", "cldr-misc-modern", "main"),
+  path(tempdir, "cldr-json-main", "cldr-json", "cldr-misc-full", "main"),
   recurse = TRUE, glob = "*/listPatterns.json"
 )
 
@@ -123,7 +123,21 @@ all_list_patterns <- bind_rows(
   )
 
 list_patterns <- all_list_patterns %>%
-  # Remove territories that do not differ from base case
+  # Remove non-English languages that do not differ from English
+  filter(
+    !(
+      and_start == "{0}, {1}" &
+      and_middle == "{0}, {1}" &
+      and_end %in% c("{0}, {1}", "{0} and {1}", "{0}, and {1}") &
+      and_2 %in% c("{0}, {1}", "{0} and {1}", "{0}, and {1}") &
+      or_start == "{0}, {1}" &
+      or_middle == "{0}, {1}" &
+      or_end %in% c("{0}, {1}", "{0} or {1}", "{0}, or {1}") &
+      or_2 %in% c("{0}, {1}", "{0} or {1}", "{0}, or {1}")
+    ) |
+    language == "en"
+  ) %>%
+  # Remove territories that do not differ from the base case for their language
   filter(
     map2_lgl(
       language, territory,
@@ -199,8 +213,8 @@ list_glue_patterns <- list_glue_patterns %>%
 metadata <- tribble(
   ~ name,                      ~ value,
   "Project-Id-Version",        "and 0.0.0.9000",
-  "POT-Creation-Date",         format(Sys.time(), format = "%Y-%m-%d %H:%M %Z"),
-  "PO-Revision-Date",          format(Sys.time(), format = "%Y-%m-%d %H:%M %Z"),
+  "POT-Creation-Date",         format(Sys.time(), format = "%Y-%m-%d"),
+  "PO-Revision-Date",          format(Sys.time(), format = "%Y-%m-%d"),
   "Last-Translator",           "Alexander Rossell Hayes <alexander@rossellhayes.com>",
   "Language-Team",             "Alexander Rossell Hayes <alexander@rossellhayes.com>",
   "Language",                  " ",
