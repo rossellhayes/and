@@ -13,27 +13,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==0 || ( n%100>1 && n%100<11) ? 1 : (n%100>10 && n%100<20 ) ? 2 : 3);\n"
 
-msgid "{x0}, {x1}{tag(and_start)}"
-msgstr "{x0}, {x1}"
-
-msgid "{x0}, {x1}{tag(and_middle)}"
-msgstr "{x0}, {x1}"
-
 msgid "{x0} and {x1}{tag(and_end)}"
 msgstr "{x0}, u {x1}"
 
 msgid "{x0} and {x1}{tag(and_2)}"
 msgstr "{x0} u {x1}"
-
-msgid "{x0}, {x1}{tag(or_start)}"
-msgstr "{x0}, {x1}"
-
-msgid "{x0}, {x1}{tag(or_middle)}"
-msgstr "{x0}, {x1}"
-
-msgid "{x0} or {x1}{tag(or_end)}"
-msgstr "{x0}, or {x1}"
-
-msgid "{x0} or {x1}{tag(or_2)}"
-msgstr "{x0} or {x1}"
 

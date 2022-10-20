@@ -13,23 +13,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "{x0}, {x1}{tag(and_start)}"
-msgstr "{x0}, {x1}"
-
-msgid "{x0}, {x1}{tag(and_middle)}"
-msgstr "{x0}, {x1}"
-
 msgid "{x0} and {x1}{tag(and_end)}"
 msgstr "{x0} e {x1}"
 
 msgid "{x0} and {x1}{tag(and_2)}"
 msgstr "{x0} e {x1}"
-
-msgid "{x0}, {x1}{tag(or_start)}"
-msgstr "{x0}, {x1}"
-
-msgid "{x0}, {x1}{tag(or_middle)}"
-msgstr "{x0}, {x1}"
 
 msgid "{x0} or {x1}{tag(or_end)}"
 msgstr "{x0} u {x1}"

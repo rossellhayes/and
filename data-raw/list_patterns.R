@@ -6,6 +6,7 @@ library(dplyr)
 conflict_prefer("filter", "dplyr")
 library(fs)
 library(glue)
+library(incase)
 library(jsonlite)
 library(poio)
 library(purrr)
@@ -157,6 +158,17 @@ list_patterns <- all_list_patterns %>%
       }
     )
   ) %>%
+  # Remove data that doesn't differ from the fallback language
+  mutate(
+    and_start = if_case(and_start == "{0}, {1}", NA, and_start),
+    and_middle = if_case(and_middle == "{0}, {1}", NA, and_middle),
+    and_end = if_case(language != "en" & and_end %in% c("{0} and {1}", "{0}, and {1}"), NA, and_end),
+    and_2 = if_case(language != "en" & and_2 == "{0} and {1}", NA, and_2),
+    or_start = if_case(or_start == "{0}, {1}", NA, or_start),
+    or_middle = if_case(or_middle == "{0}, {1}", NA, or_middle),
+    or_end = if_case(language != "en" & or_end %in% c("{0} or {1}", "{0}, or {1}"), NA, or_end),
+    or_2 = if_case(language != "en" & or_2 == "{0} or {1}", NA, or_2)
+  ) %>%
   mutate(
     language = if_else(
       is.na(territory),
@@ -269,7 +281,8 @@ po_files <- list_glue_patterns %>%
       po$direct <- po$direct %>%
         select(-msgstr) %>%
         left_join(data, by = "msgid") %>%
-        relocate(msgstr, .after = 1)
+        relocate(msgstr, .after = 1) %>%
+        drop_na(msgstr)
 
       po
     }
