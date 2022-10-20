@@ -1,4 +1,6 @@
+library(conflicted)
 library(dplyr)
+conflict_prefer("filter", "dplyr")
 library(fs)
 library(poio)
 library(purrr)

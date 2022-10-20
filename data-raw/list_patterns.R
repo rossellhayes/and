@@ -1,9 +1,12 @@
+library(conflicted)
 library(archive)
 library(crossmap)
 library(digest)
 library(dplyr)
+conflict_prefer("filter", "dplyr")
 library(fs)
 library(glue)
+library(incase)
 library(jsonlite)
 library(poio)
 library(purrr)
@@ -26,7 +29,7 @@ archive::archive_extract(
     "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/territories.json",
     archive_files %>%
       str_subset(
-        "cldr-json-main/cldr-json/cldr-misc-modern/main/.+/listPatterns\\.json"
+        "cldr-json-main/cldr-json/cldr-misc-full/main/.+/listPatterns\\.json"
       )
   )
 )
@@ -50,7 +53,7 @@ territories <- fs::path(
   tibble::enframe()
 
 list_pattern_files <- fs::dir_ls(
-  path(tempdir, "cldr-json-main", "cldr-json", "cldr-misc-modern", "main"),
+  path(tempdir, "cldr-json-main", "cldr-json", "cldr-misc-full", "main"),
   recurse = TRUE, glob = "*/listPatterns.json"
 )
 
@@ -121,7 +124,21 @@ all_list_patterns <- bind_rows(
   )
 
 list_patterns <- all_list_patterns %>%
-  # Remove territories that do not differ from base case
+  # Remove non-English languages that do not differ from English
+  filter(
+    !(
+      and_start == "{0}, {1}" &
+      and_middle == "{0}, {1}" &
+      and_end %in% c("{0}, {1}", "{0} and {1}", "{0}, and {1}") &
+      and_2 %in% c("{0}, {1}", "{0} and {1}", "{0}, and {1}") &
+      or_start == "{0}, {1}" &
+      or_middle == "{0}, {1}" &
+      or_end %in% c("{0}, {1}", "{0} or {1}", "{0}, or {1}") &
+      or_2 %in% c("{0}, {1}", "{0} or {1}", "{0}, or {1}")
+    ) |
+    language == "en"
+  ) %>%
+  # Remove territories that do not differ from the base case for their language
   filter(
     map2_lgl(
       language, territory,
@@ -140,6 +157,17 @@ list_patterns <- all_list_patterns %>%
         nrow(distinct(matched_data)) > 1
       }
     )
+  ) %>%
+  # Remove data that doesn't differ from the fallback language
+  mutate(
+    and_start = if_case(and_start == "{0}, {1}", NA, and_start),
+    and_middle = if_case(and_middle == "{0}, {1}", NA, and_middle),
+    and_end = if_case(language != "en" & and_end %in% c("{0} and {1}", "{0}, and {1}"), NA, and_end),
+    and_2 = if_case(language != "en" & and_2 == "{0} and {1}", NA, and_2),
+    or_start = if_case(or_start == "{0}, {1}", NA, or_start),
+    or_middle = if_case(or_middle == "{0}, {1}", NA, or_middle),
+    or_end = if_case(language != "en" & or_end %in% c("{0} or {1}", "{0}, or {1}"), NA, or_end),
+    or_2 = if_case(language != "en" & or_2 == "{0} or {1}", NA, or_2)
   ) %>%
   mutate(
     language = if_else(
@@ -197,8 +225,8 @@ list_glue_patterns <- list_glue_patterns %>%
 metadata <- tribble(
   ~ name,                      ~ value,
   "Project-Id-Version",        "and 0.0.0.9000",
-  "POT-Creation-Date",         format(Sys.time(), format = "%Y-%m-%d %H:%M %Z"),
-  "PO-Revision-Date",          format(Sys.time(), format = "%Y-%m-%d %H:%M %Z"),
+  "POT-Creation-Date",         format(Sys.time(), format = "%Y-%m-%d"),
+  "PO-Revision-Date",          format(Sys.time(), format = "%Y-%m-%d"),
   "Last-Translator",           "Alexander Rossell Hayes <alexander@rossellhayes.com>",
   "Language-Team",             "Alexander Rossell Hayes <alexander@rossellhayes.com>",
   "Language",                  " ",
@@ -253,7 +281,8 @@ po_files <- list_glue_patterns %>%
       po$direct <- po$direct %>%
         select(-msgstr) %>%
         left_join(data, by = "msgid") %>%
-        relocate(msgstr, .after = 1)
+        relocate(msgstr, .after = 1) %>%
+        drop_na(msgstr)
 
       po
     }
