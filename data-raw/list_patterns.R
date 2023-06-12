@@ -1,6 +1,5 @@
 library(conflicted)
 library(archive)
-library(crossmap)
 library(digest)
 library(dplyr)
 conflict_prefer("filter", "dplyr")
@@ -84,25 +83,15 @@ list_patterns_raw <- list_pattern_files %>%
   ) %>%
   select(-variant)
 
-list_patterns_raw[list_patterns_raw$language == "en" & is.na(list_patterns_raw$territory), ] <-
-  list_patterns_raw[list_patterns_raw$language == "en" & is.na(list_patterns_raw$territory), ] %>%
-  mutate(territory = "US")
-
-list_patterns_raw[list_patterns_raw$language == "en" & list_patterns_raw$territory == "GB", ] <-
-  list_patterns_raw[list_patterns_raw$language == "en" & list_patterns_raw$territory == "GB", ] %>%
-  mutate(territory = NA)
-
 simplified_chinese_patterns <- list_patterns_raw %>%
   filter(language == "zh", script == "Hans", is.na(territory)) %>%
-  select(-territory) %>%
-  mutate(script = NA) %>%
-  cross_join(tibble(territory = c("CN", "MY", "SG")))
+  mutate(territory = list(c("CN", "MY", "SG"))) %>%
+  unnest(territory)
 
 traditional_chinese_patterns <- list_patterns_raw %>%
   filter(language == "zh", script == "Hant", is.na(territory)) %>%
-  select(-territory) %>%
-  mutate(script = NA) %>%
-  cross_join(tibble(territory = c("HK", "MO", "TW")))
+  mutate(territory = list(c("HK", "MO", "TW"))) %>%
+  unnest(territory)
 
 all_list_patterns <- bind_rows(
   list_patterns_raw,
@@ -129,12 +118,12 @@ list_patterns <- all_list_patterns %>%
     !(
       and_start == "{0}, {1}" &
       and_middle == "{0}, {1}" &
-      and_end %in% c("{0}, {1}", "{0} and {1}", "{0}, and {1}") &
-      and_2 %in% c("{0}, {1}", "{0} and {1}", "{0}, and {1}") &
+      and_end %in% c("{0} {1}", "{0}, {1}", "{0} and {1}", "{0}, and {1}") &
+      and_2 %in% c("{0} {1}", "{0}, {1}", "{0} and {1}", "{0}, and {1}") &
       or_start == "{0}, {1}" &
       or_middle == "{0}, {1}" &
-      or_end %in% c("{0}, {1}", "{0} or {1}", "{0}, or {1}") &
-      or_2 %in% c("{0}, {1}", "{0} or {1}", "{0}, or {1}")
+      or_end %in% c("{0} {1}", "{0}, {1}", "{0} or {1}", "{0}, or {1}") &
+      or_2 %in% c("{0} {1}", "{0}, {1}", "{0} or {1}", "{0}, or {1}")
     ) |
     language == "en"
   ) %>%
@@ -180,7 +169,10 @@ list_patterns <- all_list_patterns %>%
 
 list_glue_patterns <- list_patterns %>%
   mutate(
-    across(-starts_with("language"), str_replace_all, "\\{(\\d)\\}", "{x\\1}")
+    across(
+      -starts_with("language"),
+      function(x) str_replace_all(x, "\\{(\\d)\\}", "{x\\1}")
+    )
   )
 
 list_glue_patterns[list_glue_patterns$language == "cy", ] <-
@@ -213,13 +205,11 @@ list_glue_patterns <- list_glue_patterns %>%
     .cols = c(ends_with("start"), ends_with("middle")),
     ~ paste0("{x0}, {x1}{tag(", ., ")}")
   ) %>%
-  rename_with(
-    .cols = c(and_end, and_2),
-    ~ paste0("{x0} and {x1}{tag(", ., ")}")
-  ) %>%
-  rename_with(
-    .cols = c(or_end, or_2),
-    ~ paste0("{x0} or {x1}{tag(", ., ")}")
+  rename(
+    "{x0}, and {x1}{tag(and_end)}" = and_end,
+    "{x0} and {x1}{tag(and_2)}" = and_2,
+    "{x0}, or {x1}{tag(or_end)}" = or_end,
+    "{x0} or {x1}{tag(or_2)}" = or_2
   )
 
 metadata <- tribble(
@@ -268,7 +258,7 @@ po_files <- list_glue_patterns %>%
   set_names(list_glue_patterns$language) %>%
   purrr::map(
     function(row) {
-      cli::cli_bullets(c("*" = "Building {.path {row$language}}"))
+      cli::cli_bullets(c("*" = "Building {.val {row$language}}"))
 
       po <- generate_po_from_pot(pot, lang = row$language)
 
@@ -292,8 +282,8 @@ po_files <- list_glue_patterns %>%
 po_files %>%
   purrr::iwalk(
     function(po, language) {
-      cli::cli_bullets(c("*" = "Installing {.path {language}}"))
       path <- glue("po/R-{language}.po")
+      cli::cli_bullets(c("*" = "Installing {.path {path}}"))
 
       try(file_chmod(path, "u+w"), silent = TRUE)
       write_po(po, path)
