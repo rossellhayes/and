@@ -7,7 +7,7 @@
 
 [![](https://www.r-pkg.org/badges/version/and?color=brightgreen)](https://cran.r-project.org/package=and)
 [![r-universe status
-badge](https://rossellhayes.r-universe.dev/badges/and)](https://rossellhayes.r-universe.dev/ui#package:and)
+badge](https://rossellhayes.r-universe.dev/badges/and)](https://rossellhayes.r-universe.dev/and)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
@@ -108,16 +108,16 @@ environment variables? You can explicitly set the language using the
 
 ``` r
 and(names, language = "en_US")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
-#> "" cannot be honored
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale
+#> to "" cannot be honored
 #> [1] "John, Paul, George, and Ringo"
 and(names, language = "en_GB")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
-#> "" cannot be honored
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale
+#> to "" cannot be honored
 #> [1] "John, Paul, George and Ringo"
 and(names, language = "es")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to
-#> "" cannot be honored
+#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale
+#> to "" cannot be honored
 #> [1] "John, Paul, George y Ringo"
 and(names, language = "fr")
 #> Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la
