@@ -8,6 +8,10 @@
 	* Supports "and" but not "or"
 * Syriac (syr)
 	* Supports "and" and "or", but doesn't localize comma between list items
+	
+## Bug fixes
+
+* `and()` and `or()` no longer produce unexpected results when `x` is a factor.
 
 # and 0.1.3
 
