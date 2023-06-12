@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: and 0.0.0.9000\n"
-"POT-Creation-Date: 2022-10-20\n"
-"PO-Revision-Date: 2022-10-20\n"
+"POT-Creation-Date: 2023-06-12\n"
+"PO-Revision-Date: 2023-06-12\n"
 "Last-Translator: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language-Team: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language: uk\n"
@@ -13,13 +13,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-msgid "{x0} and {x1}{tag(and_end)}"
+msgid "{x0}, and {x1}{tag(and_end)}"
 msgstr "{x0} і {x1}"
 
 msgid "{x0} and {x1}{tag(and_2)}"
 msgstr "{x0} і {x1}"
 
-msgid "{x0} or {x1}{tag(or_end)}"
+msgid "{x0}, or {x1}{tag(or_end)}"
 msgstr "{x0} або {x1}"
 
 msgid "{x0} or {x1}{tag(or_2)}"

@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: and 0.0.0.9000\n"
-"POT-Creation-Date: 2022-10-20\n"
-"PO-Revision-Date: 2022-10-20\n"
+"POT-Creation-Date: 2023-06-12\n"
+"PO-Revision-Date: 2023-06-12\n"
 "Last-Translator: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language-Team: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language: ne\n"
@@ -16,13 +16,13 @@ msgstr ""
 msgid "{x0}, {x1}{tag(and_start)}"
 msgstr "{x0},{x1}"
 
-msgid "{x0} and {x1}{tag(and_end)}"
+msgid "{x0}, and {x1}{tag(and_end)}"
 msgstr "{x0} र {x1}"
 
 msgid "{x0} and {x1}{tag(and_2)}"
 msgstr "{x0} र {x1}"
 
-msgid "{x0} or {x1}{tag(or_end)}"
+msgid "{x0}, or {x1}{tag(or_end)}"
 msgstr "{x0}, वा {x1}"
 
 msgid "{x0} or {x1}{tag(or_2)}"

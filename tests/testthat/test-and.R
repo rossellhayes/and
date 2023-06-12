@@ -67,7 +67,7 @@ test_that("set language manually", {
 })
 
 test_that("languages with unavailable territories fallback", {
-  expect_equal(and(1:4, language = "en_AU"), "1, 2, 3 and 4")
+  expect_equal(and(1:4, language = "en_PR"), "1, 2, 3, and 4")
   expect_equal(and(1:4, language = "ca_AD"), "1, 2, 3 i 4")
   expect_equal(and(1:4, language = "cy_AR"), "1, 2, 3 a 4")
   expect_equal(and(1:4, language = "es_MX"), "1, 2, 3 y 4")
