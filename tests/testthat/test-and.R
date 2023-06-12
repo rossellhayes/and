@@ -332,6 +332,13 @@ test_that("unset language", {
   set_language(old_language)
 })
 
+test_that("supports factors", {
+  withr::local_language("en_US")
+
+  expect_equal(and(factor(c("one", "two", "three"))), "one, two, and three")
+  expect_equal(or(factor(c("one", "two", "three"))), "one, two, or three")
+})
+
 test_that("error if language is not a string", {
   expect_error(and(1:4, language = 1), class = "and_invalid_language")
   expect_error(and(1:4, language = c("en", "fr")), class = "and_invalid_language")

@@ -71,8 +71,10 @@ conjoin <- function(
 ) {
   rlang::check_dots_empty0(..., call = call)
 
+  x <- as.character(x)
+
   if (length(x) == 1) {
-    return(as.character(x))
+    return(x)
   }
 
   if (!is.null(language)) {
