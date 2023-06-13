@@ -10,9 +10,10 @@ A data frame with 6 variables:
 \item{language}{The name of the language, possibly with a territory in parentheses}
 \item{code}{The language code}
 \item{example_and_2}{An example of a conjunctive list with two elements in the language}
-\item{example_and_3}{An example of a conjunctive list with three elements in the language}
+\item{example_and_4}{An example of a conjunctive list with four elements in the language}
 \item{example_or_2}{An example of a disjunctive list with two elements in the language}
-\item{example_or_3}{An example of a disjunctive list with three elements in the language}
+\item{example_or_4}{An example of a disjunctive list with four elements in the language}
+\item{support}{Either "full" or "partial". Partially supported languages generally localize \code{\link[=and]{and()}} but not \code{\link[=or]{or()}}.}
 }
 }
 \source{
