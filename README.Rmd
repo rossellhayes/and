@@ -113,6 +113,58 @@ and(names, language = "es")
 and(names, language = "fr")
 ```
 
+### Languages
+
+```{r include = FALSE}
+library(dplyr)
+library(stringr)
+
+links <- and_languages %>% 
+  filter(
+    !str_detect(language, ".+ \\(.+\\)"),
+    language != "Norwegian"
+  ) %>% 
+  mutate(
+    link = str_replace_all(
+      paste0("(https://en.wikipedia.org/wiki/", language, "_language)"),
+      " ",
+      "_"
+    ),
+    markdown = paste0("* [", language, "]", link),
+    markdown = if_else(
+      language == "English",
+      paste(
+        markdown,
+        "(with and without [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma))"
+      ),
+      markdown
+    )
+  ) %>% 
+  arrange(language)
+```
+
+#### Fully supported languages
+
+```{r echo = FALSE, results = "asis"}
+links %>% 
+  filter(support == "full") %>% 
+  pull(markdown) %>% 
+  paste(collapse = "\n") %>%
+  cat()
+```
+
+#### Partially supported languages
+
+Partially supported languages generally localize `and()` but not `or()`.
+
+```{r echo = FALSE, results = "asis"}
+links %>% 
+  filter(support == "partial") %>% 
+  pull(markdown) %>% 
+  paste(collapse = "\n") %>%
+  cat()
+```
+
 ---
 
 Please note that **and** is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
