@@ -71,7 +71,7 @@ set_language <- function(language) {
     # Messages from the old language may be shown in the new language
     # This invalidates the cache so new messages have to generate
     old_locale <- Sys.getlocale("LC_MESSAGES")
-    Sys.setlocale("LC_MESSAGES", "")
+    suppressWarnings(Sys.setlocale("LC_MESSAGES", ""))
     Sys.setlocale("LC_MESSAGES", old_locale)
   }
 

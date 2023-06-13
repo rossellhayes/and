@@ -108,20 +108,12 @@ environment variables? You can explicitly set the language using the
 
 ``` r
 and(names, language = "en_US")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale
-#> to "" cannot be honored
 #> [1] "John, Paul, George, and Ringo"
 and(names, language = "en_GB")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale
-#> to "" cannot be honored
 #> [1] "John, Paul, George and Ringo"
 and(names, language = "es")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale
-#> to "" cannot be honored
 #> [1] "John, Paul, George y Ringo"
 and(names, language = "fr")
-#> Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la
-#> localisation à "" n'a pas pu être honorée
 #> [1] "John, Paul, George et Ringo"
 ```
 
