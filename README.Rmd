@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
 library(and)
 # pak::pkg_install("GuangchuangYu/badger#42")
 library(badger)
+withr::local_language("en_US")
 ```
 
 # and <img src="man/figures/logo.png?raw=TRUE" align="right" height="138" />
@@ -29,7 +30,7 @@ library(badger)
 `r badge_dependencies()`
 <!-- badges: end -->
 
-**and** constructs language-aware lists in R. It extends the functionality of functions like `knitr::combine_words()` and `glue::glue_collapse()` to make "and"-separated and "or"-separated lists that automatically conform to the user's R language settings.
+**and** constructs language-aware lists in R. It extends the functionality of functions like `knitr::combine_words()` and `glue::glue_collapse()` to make _and_-separated and _or_-separated lists that automatically conform to the user's R language settings.
 
 ## Installation
 
@@ -62,41 +63,41 @@ and(names)
 But the Oxford comma is less common in other varieties of English, what happens if I change my R language to British English?
 
 ```{r}
-Sys.setenv(LANG = "en_GB")
+Sys.setenv(LANGUAGE = "en_GB")
 and(names)
 ```
 
 What about other languages?
 
 ```{r}
-Sys.setenv(LANG = "es")
+Sys.setenv(LANGUAGE = "es")
 and(names)
-Sys.setenv(LANG = "fr")
+Sys.setenv(LANGUAGE = "eu")
 and(names)
-Sys.setenv(LANG = "hi")
+Sys.setenv(LANGUAGE = "ko")
 and(names)
 ```
 
 ### Handling the nuances
 
 Creating a list is not as simple as putting a different word between the last two items.
-For example, in Spanish, the word for "and" changes if the next word starts with an _i_ or _y_:
+For example, in Spanish, the word for _and_ changes if the next word starts with an ⟨i⟩  or ⟨y⟩:
 
 ```{r}
 princess_bride <- c("Vizzini", "Fezzik", "Inigo Montoya")
-Sys.setenv(LANG = "es")
+Sys.setenv(LANGUAGE = "es")
 and(princess_bride)
 ```
 
-### "or"-separated lists
+### _or_-separated lists
 
-Everything `and()` can do `or()` can do better. Just use `or()` to create "or"-separated lists with all the same contextual awareness.
+Everything `and()` can do `or()` can do better. Just use `or()` to create _or_-separated lists with all the same contextual awareness.
 
 ```{r}
 outcomes <- c("win", "lose", "draw")
-Sys.setenv(LANG = "en_US")
+Sys.setenv(LANGUAGE = "en_US")
 or(outcomes)
-Sys.setenv(LANG = "ja")
+Sys.setenv(LANGUAGE = "ja")
 or(outcomes)
 ```
 
