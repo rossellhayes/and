@@ -49,7 +49,18 @@ territories <- fs::path(
   jsonlite::read_json() %>%
   purrr::pluck("main", "en", "localeDisplayNames", "territories") %>%
   unlist() %>%
-  tibble::enframe()
+  tibble::enframe() %>%
+  filter(!name %in% c("HK", "MM", "MO", "PS")) %>%
+  mutate(
+    name = case_match(
+      name,
+      "HK-alt-short" ~ "HK",
+      "MM-alt-short" ~ "MM",
+      "MO-alt-short" ~ "MO",
+      "PS-alt-short" ~ "PS",
+      .default = name
+    )
+  )
 
 list_pattern_files <- fs::dir_ls(
   path(tempdir, "cldr-json-main", "cldr-json", "cldr-misc-full", "main"),
