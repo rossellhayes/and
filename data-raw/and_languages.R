@@ -4,6 +4,7 @@ conflict_prefer("filter", "dplyr")
 library(fs)
 library(poio)
 library(purrr)
+library(stringr)
 devtools::load_all()
 
 and_languages <- fs::dir_ls("po", glob = "*.po") %>%
@@ -16,9 +17,10 @@ and_languages <- fs::dir_ls("po", glob = "*.po") %>%
   }) %>%
   mutate(
     example_and_2 = map_chr(code, ~ and(1:2, language = .)),
-    example_and_3 = map_chr(code, ~ and(1:3, language = .)),
+    example_and_4 = map_chr(code, ~ and(1:4, language = .)),
     example_or_2  = map_chr(code, ~ or(1:2, language = .)),
-    example_or_3  = map_chr(code, ~ or(1:3, language = .)),
-  )
+    example_or_4  = map_chr(code, ~ or(1:4, language = .)),
+  ) %>%
+  arrange(str_detect(language, "English"), language)
 
 use_data(and_languages, overwrite = TRUE)
