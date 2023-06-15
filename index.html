@@ -37,7 +37,7 @@
     
     <a class="navbar-brand me-2" href="index.html">and</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -78,7 +78,7 @@
 </div>
 <!-- badges: start -->
 
-<p><strong>and</strong> constructs language-aware lists in R. It extends the functionality of functions like <code><a href="https://rdrr.io/pkg/knitr/man/combine_words.html" class="external-link">knitr::combine_words()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue_collapse.html" class="external-link">glue::glue_collapse()</a></code> to make “and”-separated and “or”-separated lists that automatically conform to the user’s R language settings.</p>
+<p><strong>and</strong> constructs language-aware lists in R. It extends the functionality of functions like <code><a href="https://rdrr.io/pkg/knitr/man/combine_words.html" class="external-link">knitr::combine_words()</a></code> and <code><a href="https://glue.tidyverse.org/reference/glue_collapse.html" class="external-link">glue::glue_collapse()</a></code> to make <em>and</em>-separated and <em>or</em>-separated lists that automatically conform to the user’s R language settings.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -100,40 +100,41 @@
 <span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span></code></pre></div>
 <p>But the Oxford comma is less common in other varieties of English, what happens if I change my R language to British English?</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span></code></pre></div>
 <p>What about other languages?</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"eu"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George et Ringo"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"hi"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "John, Paul, George eta Ringo"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"ko"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George, और Ringo"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "John, Paul, George 및 Ringo"</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="handling-the-nuances">Handling the nuances<a class="anchor" aria-label="anchor" href="#handling-the-nuances"></a>
 </h3>
-<p>Creating a list is not as simple as putting a different word between the last two items. For example, in Spanish, the word for “and” changes if the next word starts with an <em>i</em> or <em>y</em>:</p>
+<p>Creating a list is not as simple as putting a different word between the last two items. For example, in Spanish, the word for <em>and</em> changes if the next word starts with an ⟨i⟩ or ⟨y⟩:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">princess_bride</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Vizzini"</span>, <span class="st">"Fezzik"</span>, <span class="st">"Inigo Montoya"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">princess_bride</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Vizzini, Fezzik e Inigo Montoya"</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="or-separated-lists">“or”-separated lists<a class="anchor" aria-label="anchor" href="#or-separated-lists"></a>
+<h3 id="or-separated-lists">
+<em>or</em>-separated lists<a class="anchor" aria-label="anchor" href="#or-separated-lists"></a>
 </h3>
-<p>Everything <code><a href="reference/and.html">and()</a></code> can do <code><a href="reference/and.html">or()</a></code> can do better. Just use <code><a href="reference/and.html">or()</a></code> to create “or”-separated lists with all the same contextual awareness.</p>
+<p>Everything <code><a href="reference/and.html">and()</a></code> can do <code><a href="reference/and.html">or()</a></code> can do better. Just use <code><a href="reference/and.html">or()</a></code> to create <em>or</em>-separated lists with all the same contextual awareness.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"win"</span>, <span class="st">"lose"</span>, <span class="st">"draw"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">or</a></span><span class="op">(</span><span class="va">outcomes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "win, lose, or draw"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANG <span class="op">=</span> <span class="st">"ja"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"ja"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">or</a></span><span class="op">(</span><span class="va">outcomes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "win、lose、またはdraw"</span></span></code></pre></div>
 </div>
@@ -143,23 +144,165 @@
 <p>Don’t want the language of you string to depend on the user’s environment variables? You can explicitly set the language using the <code>language</code> argument.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span></span>
-<span><span class="co">#&gt; "" cannot be honored</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span></span>
-<span><span class="co">#&gt; "" cannot be honored</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): OS reports request to set locale to</span></span>
-<span><span class="co">#&gt; "" cannot be honored</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in Sys.setlocale("LC_MESSAGES", ""): La requête OS pour spécifier la</span></span>
-<span><span class="co">#&gt; localisation à "" n'a pas pu être honorée</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George et Ringo"</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="languages">Languages<a class="anchor" aria-label="anchor" href="#languages"></a>
+</h3>
+<div class="section level4">
+<h4 id="fully-supported-languages">Fully supported languages<a class="anchor" aria-label="anchor" href="#fully-supported-languages"></a>
+</h4>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Afrikaans_language" class="external-link">Afrikaans</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Albanian_language" class="external-link">Albanian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Amharic_language" class="external-link">Amharic</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Arabic_language" class="external-link">Arabic</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Armenian_language" class="external-link">Armenian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Assamese_language" class="external-link">Assamese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Asturian_language" class="external-link">Asturian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Azerbaijani_language" class="external-link">Azerbaijani</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bangla_language" class="external-link">Bangla</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Basque_language" class="external-link">Basque</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Belarusian_language" class="external-link">Belarusian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bosnian_language" class="external-link">Bosnian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Breton_language" class="external-link">Breton</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bulgarian_language" class="external-link">Bulgarian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Burmese_language" class="external-link">Burmese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cantonese_language" class="external-link">Cantonese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Catalan_language" class="external-link">Catalan</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cebuano_language" class="external-link">Cebuano</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cherokee_language" class="external-link">Cherokee</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chinese_language" class="external-link">Chinese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chuvash_language" class="external-link">Chuvash</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Croatian_language" class="external-link">Croatian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Czech_language" class="external-link">Czech</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Danish_language" class="external-link">Danish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dutch_language" class="external-link">Dutch</a></li>
+<li>
+<a href="https://en.wikipedia.org/wiki/English_language" class="external-link">English</a> (with and without <a href="https://en.wikipedia.org/wiki/Serial_comma" class="external-link">Oxford comma</a>)</li>
+<li><a href="https://en.wikipedia.org/wiki/Estonian_language" class="external-link">Estonian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Faroese_language" class="external-link">Faroese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Filipino_language" class="external-link">Filipino</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Finnish_language" class="external-link">Finnish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/French_language" class="external-link">French</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Galician_language" class="external-link">Galician</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Georgian_language" class="external-link">Georgian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/German_language" class="external-link">German</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Greek_language" class="external-link">Greek</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Gujarati_language" class="external-link">Gujarati</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hausa_language" class="external-link">Hausa</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hebrew_language" class="external-link">Hebrew</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hindi_language" class="external-link">Hindi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hungarian_language" class="external-link">Hungarian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Icelandic_language" class="external-link">Icelandic</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Indonesian_language" class="external-link">Indonesian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Interlingua_language" class="external-link">Interlingua</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Irish_language" class="external-link">Irish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Italian_language" class="external-link">Italian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Japanese_language" class="external-link">Japanese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Javanese_language" class="external-link">Javanese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kabuverdianu_language" class="external-link">Kabuverdianu</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kaingang_language" class="external-link">Kaingang</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kannada_language" class="external-link">Kannada</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kazakh_language" class="external-link">Kazakh</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Khmer_language" class="external-link">Khmer</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Konkani_language" class="external-link">Konkani</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Korean_language" class="external-link">Korean</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kurdish_language" class="external-link">Kurdish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kyrgyz_language" class="external-link">Kyrgyz</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lao_language" class="external-link">Lao</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Latvian_language" class="external-link">Latvian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lithuanian_language" class="external-link">Lithuanian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lower_Sorbian_language" class="external-link">Lower Sorbian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Macedonian_language" class="external-link">Macedonian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Malay_language" class="external-link">Malay</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Malayalam_language" class="external-link">Malayalam</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Marathi_language" class="external-link">Marathi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mongolian_language" class="external-link">Mongolian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Nepali_language" class="external-link">Nepali</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Nheengatu_language" class="external-link">Nheengatu</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Nigerian_Pidgin_language" class="external-link">Nigerian Pidgin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Norwegian_Bokm%C3%A5l_language" class="external-link">Norwegian Bokmål</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Norwegian_Nynorsk_language" class="external-link">Norwegian Nynorsk</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Odia_language" class="external-link">Odia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Persian_language" class="external-link">Persian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Polish_language" class="external-link">Polish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Portuguese_language" class="external-link">Portuguese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Punjabi_language" class="external-link">Punjabi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Quechua_language" class="external-link">Quechua</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Romanian_language" class="external-link">Romanian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Romansh_language" class="external-link">Romansh</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Russian_language" class="external-link">Russian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sardinian_language" class="external-link">Sardinian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Scottish_Gaelic_language" class="external-link">Scottish Gaelic</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Serbian_language" class="external-link">Serbian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sindhi_language" class="external-link">Sindhi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sinhala_language" class="external-link">Sinhala</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Slovak_language" class="external-link">Slovak</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Slovenian_language" class="external-link">Slovenian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Somali_language" class="external-link">Somali</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Spanish_language" class="external-link">Spanish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Swahili_language" class="external-link">Swahili</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Swedish_language" class="external-link">Swedish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Syriac_language" class="external-link">Syriac</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tamil_language" class="external-link">Tamil</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Telugu_language" class="external-link">Telugu</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Thai_language" class="external-link">Thai</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tigrinya_language" class="external-link">Tigrinya</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tongan_language" class="external-link">Tongan</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Turkish_language" class="external-link">Turkish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Turkmen_language" class="external-link">Turkmen</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ukrainian_language" class="external-link">Ukrainian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Upper_Sorbian_language" class="external-link">Upper Sorbian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Urdu_language" class="external-link">Urdu</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Uzbek_language" class="external-link">Uzbek</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Vietnamese_language" class="external-link">Vietnamese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Welsh_language" class="external-link">Welsh</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Yoruba_language" class="external-link">Yoruba</a></li>
+</ul>
+</div>
+<div class="section level4">
+<h4 id="partially-supported-languages">Partially supported languages<a class="anchor" aria-label="anchor" href="#partially-supported-languages"></a>
+</h4>
+<p>Partially supported languages generally localize <code><a href="reference/and.html">and()</a></code> but not <code><a href="reference/and.html">or()</a></code>.</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bodo_language" class="external-link">Bodo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Chakma_language" class="external-link">Chakma</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Colognian_language" class="external-link">Colognian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dogri_language" class="external-link">Dogri</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dzongkha_language" class="external-link">Dzongkha</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ewe_language" class="external-link">Ewe</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Friulian_language" class="external-link">Friulian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Igbo_language" class="external-link">Igbo</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Kashmiri_language" class="external-link">Kashmiri</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Luxembourgish_language" class="external-link">Luxembourgish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Maithili_language" class="external-link">Maithili</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Maltese_language" class="external-link">Maltese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Manipuri_language" class="external-link">Manipuri</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ngomba_language" class="external-link">Ngomba</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Northern_Sami_language" class="external-link">Northern Sami</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Ossetic_language" class="external-link">Ossetic</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pashto_language" class="external-link">Pashto</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sanskrit_language" class="external-link">Sanskrit</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sundanese_language" class="external-link">Sundanese</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Swiss_German_language" class="external-link">Swiss German</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tatar_language" class="external-link">Tatar</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Walser_language" class="external-link">Walser</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Western_Balochi_language" class="external-link">Western Balochi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Western_Frisian_language" class="external-link">Western Frisian</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Yakut_language" class="external-link">Yakut</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Yiddish_language" class="external-link">Yiddish</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Zulu_language" class="external-link">Zulu</a></li>
+</ul>
 <hr>
 <p>Please note that <strong>and</strong> is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
 </div>
 </div>
 </div>
@@ -200,7 +343,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=and" class="external-link"><img src="https://www.r-pkg.org/badges/version/and?color=brightgreen"></a></li>
-<li><a href="https://rossellhayes.r-universe.dev/ui#package:and" class="external-link"><img src="https://rossellhayes.r-universe.dev/badges/and" alt="r-universe status badge"></a></li>
+<li><a href="https://rossellhayes.r-universe.dev/and" class="external-link"><img src="https://rossellhayes.r-universe.dev/badges/and" alt="r-universe status badge"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg"></a></li>
 <li><a href="https://cran.r-project.org/web/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/license-MIT-blueviolet.svg" alt="License: MIT"></a></li>
 <li><a href="https://github.com/rossellhayes/and/actions" class="external-link"><img src="https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
