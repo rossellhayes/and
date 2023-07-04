@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 
 library(and)
-# pak::pkg_install("GuangchuangYu/badger#42")
+# pak::pkg_install("GuangchuangYu/badger")
 library(badger)
 withr::local_language("en_US")
 ```
@@ -117,29 +117,38 @@ and(names, language = "fr")
 
 ```{r include = FALSE}
 library(dplyr)
+library(knitr)
+library(rlang)
 library(stringr)
+Sys.setenv(LANGUAGE = "en_US")
 
 links <- and_languages %>% 
   filter(
-    !str_detect(language, ".+ \\(.+\\)"),
-    language != "Norwegian"
-  ) %>% 
+    !str_detect(language, "English \\(.+\\)") |
+      language == "English (United Kingdom)"
+  ) %>%
   mutate(
-    link = str_replace_all(
-      paste0("(https://en.wikipedia.org/wiki/", language, "_language)"),
-      " ",
-      "_"
-    ),
-    markdown = paste0("* [", language, "]", link),
-    markdown = if_else(
-      language == "English",
-      paste(
+    link = language %>% 
+      str_remove(" \\(.+\\)") %>%
+      paste0("(https://en.wikipedia.org/wiki/", ., "_language)") %>%
+      str_replace_all(" ", "_"),
+    markdown = language %>% 
+      str_remove(" \\(United Kingdom\\)") %>% 
+      paste0("[", ., "]", link),
+    markdown = case_match(
+      code,
+      "en" ~ paste(
         markdown,
-        "(with and without [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma))"
+        "(with [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma))"
       ),
-      markdown
-    )
-  ) %>% 
+      "en_GB" ~ paste(
+        markdown,
+        "(without [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma))"
+      ),
+      .default = markdown
+    ),
+    code = if_else(code == "en_GB", "`en_GB` et al.*", paste0("`", code, "`"))
+  ) %>%
   arrange(language)
 ```
 
@@ -148,10 +157,12 @@ links <- and_languages %>%
 ```{r echo = FALSE, results = "asis"}
 links %>% 
   filter(support == "full") %>% 
-  pull(markdown) %>% 
-  paste(collapse = "\n") %>%
-  cat()
+  select(markdown, code, example_and_4, example_or_4) %>% 
+  set_names(c("Language", "Code", "*and* example", "*or* example")) %>% 
+  kable()
 ```
+
+\* The following English variants use an Oxford comma in addition to `en_GB`: `r and::and(paste0("\x60", sort(str_subset(and_languages$code, "en_(?!GB)")), "\x60"))`.
 
 #### Partially supported languages
 
@@ -160,9 +171,9 @@ Partially supported languages generally localize `and()` but not `or()`.
 ```{r echo = FALSE, results = "asis"}
 links %>% 
   filter(support == "partial") %>% 
-  pull(markdown) %>% 
-  paste(collapse = "\n") %>%
-  cat()
+  select(markdown, code, example_and_4) %>% 
+  set_names(c("Language", "Code", "*and* example")) %>% 
+  kable()
 ```
 
 ---
