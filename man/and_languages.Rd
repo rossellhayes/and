@@ -26,4 +26,7 @@ and_languages
 \description{
 A list of supported languages and examples of their usage.
 }
+\examples{
+and_languages
+}
 \keyword{datasets}

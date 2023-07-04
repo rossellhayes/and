@@ -15,4 +15,7 @@
 #'
 #' @source Language data is derived from the
 #'   [Unicode Common Locale Data Repository (CLDR)](https://cldr.unicode.org/)
+#'
+#' @examples
+#' and_languages
 "and_languages"
