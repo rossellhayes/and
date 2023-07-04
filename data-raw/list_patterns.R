@@ -1,8 +1,6 @@
-library(conflicted)
 library(archive)
 library(digest)
 library(dplyr)
-conflict_prefer("filter", "dplyr")
 library(fs)
 library(glue)
 library(incase)
