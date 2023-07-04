@@ -277,6 +277,11 @@ po_files <- list_glue_patterns %>%
 
       po <- generate_po_from_pot(pot, lang = row$language)
 
+      if (is.na(po$metadata[po$metadata$name == "Plural-Forms", "value"])) {
+        po$metadata[po$metadata$name == "Plural-Forms", "value"] <-
+          "nplurals=1; plural=0;"
+      }
+
       po$initial_comments <- c(po$initial_comments, row$language_full)
 
       data <- row %>%
