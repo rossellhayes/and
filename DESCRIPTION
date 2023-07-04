@@ -5,7 +5,8 @@ Authors@R: c(
     person("Alexander", "Rossell Hayes", , "alexander@rossellhayes.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-9412-0457")),
     person(, "Unicode, Inc.", role = "dtc",
-           comment = "Language data")
+           comment = "Language data"),
+    person("Flavia", "Rossell Hayes", , , role = "ill")
   )
 Description: Construct language-aware lists. Make "and"-separated and
     "or"-separated lists that automatically conform to the user's language

@@ -26,6 +26,7 @@ Useful links:
 Other contributors:
 \itemize{
   \item  Unicode, Inc. (Language data) [data contributor]
+  \item Flavia Rossell Hayes [illustrator]
 }
 
 }

@@ -268,6 +268,8 @@ Partially supported languages generally localize `and()` but not `or()`.
 
 ------------------------------------------------------------------------
 
+Hex sticker image by Flavia Rossell Hayes.
+
 Please note that **and** is released with a [Contributor Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
