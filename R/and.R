@@ -105,13 +105,12 @@ conjoin <- function(
 
 and_glue <- function(conjunction, suffix, data = list()) {
   if (suffix == "middle") {
-    return(
-      switch(
-        conjunction,
-        "and" = "{x0}, {x1}{tag(and_middle)}",
-        "or"  = "{x0}, {x1}{tag(or_middle)}"
-      )
+    gettext_key <- switch(
+      conjunction,
+      "and" = "{x0}, {x1}{tag(and_middle)}",
+      "or"  = "{x0}, {x1}{tag(or_middle)}"
     )
+    return(gettext(gettext_key, domain = "R-and"))
   }
 
   if (conjunction == "and") {
