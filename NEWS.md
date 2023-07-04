@@ -1,5 +1,9 @@
 # and (development version)
 
+* Fixed a bug where commas between list elements would not be localized.
+* Fixed a bug that would emit a warning whenever using a language whose `.po` file did not include a valid pluralization rule.
+* Fixed display issues when switching between left-to-right and right-to-left scripts in `and_languages` examples.
+
 # and 0.1.4
 
 * Updated `and` with data from the latest Unicode CLDR release: [CLDR 43](https://cldr.unicode.org/index/downloads/cldr-43).
