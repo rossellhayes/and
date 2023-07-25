@@ -4,7 +4,6 @@
 \name{and-package}
 \alias{and-package}
 \alias{_PACKAGE}
-\alias{reprex-package}
 \title{and: Construct Natural-Language Lists with Internationalization}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
