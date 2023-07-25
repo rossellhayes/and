@@ -13,7 +13,7 @@ Construct language-aware lists. Make "and"-separated and "or"-separated lists th
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://and.rossellhayes.com}
+  \item \url{https://pkg.rossellhayes.com/and/}
   \item \url{https://github.com/rossellhayes/and}
   \item Report bugs at \url{https://github.com/rossellhayes/and/issues}
 }

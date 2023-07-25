@@ -6,13 +6,14 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-9412-0457")),
     person(, "Unicode, Inc.", role = "dtc",
            comment = "Language data"),
-    person("Flavia", "Rossell Hayes", , , role = "ill")
+    person("Flavia", "Rossell Hayes", role = "ill")
   )
 Description: Construct language-aware lists. Make "and"-separated and
     "or"-separated lists that automatically conform to the user's language
     settings.
 License: MIT + file LICENSE
-URL: https://and.rossellhayes.com, https://github.com/rossellhayes/and
+URL: https://pkg.rossellhayes.com/and/,
+    https://github.com/rossellhayes/and
 BugReports: https://github.com/rossellhayes/and/issues
 Depends: 
     R (>= 2.10)
