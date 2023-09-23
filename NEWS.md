@@ -1,5 +1,20 @@
 # and (development version)
 
+* Updated `and` with data from the latest Unicode CLDR release: [CLDR 44 alpha 2](https://github.com/unicode-org/cldr-json/releases/tag/44.0.0-ALPHA2).
+
+## New languages
+
+* Māori (mi)
+* Venetian (vec)
+
+## Improved languages
+
+* Amharic (am)
+* Faroese (fo)
+* Syriac (syr)
+
+## Bug fixes
+
 * Fixed a bug where commas between list elements would not be localized.
 * Fixed a bug that would emit a warning whenever using a language whose `.po` file did not include a valid pluralization rule.
 * Fixed display issues when switching between left-to-right and right-to-left scripts in `and_languages` examples.
