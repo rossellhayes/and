@@ -1,4 +1,4 @@
-# and (development version)
+# and 0.1.5
 
 * Updated `and` with data from the latest Unicode CLDR release: [CLDR 44 alpha 2](https://github.com/unicode-org/cldr-json/releases/tag/44.0.0-ALPHA2).
 
