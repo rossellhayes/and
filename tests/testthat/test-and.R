@@ -1,5 +1,12 @@
 test_that("and", {
+  names <- c("John", "Paul", "George", "Ringo")
+
   expect_equal(withr::with_language("en_US", and(1:2)), "1 and 2")
+  expect_equal(withr::with_language("en_US", and(1:4)), "1, 2, 3, and 4")
+  expect_equal(withr::with_language("en_US", and(names)), "John, Paul, George, and Ringo")
+
+  skip_on_cran()
+
   expect_equal(withr::with_language("en_GB", and(1:2)), "1 and 2")
   expect_equal(withr::with_language("ca",    and(1:2)), "1 i 2")
   expect_equal(withr::with_language("cy",    and(1:2)), "1 a 2")
@@ -9,7 +16,6 @@ test_that("and", {
   expect_equal(withr::with_language("it",    and(1:2)), "1 e 2")
   expect_equal(withr::with_language("pt",    and(1:2)), "1 e 2")
 
-  expect_equal(withr::with_language("en_US", and(1:4)), "1, 2, 3, and 4")
   expect_equal(withr::with_language("en_GB", and(1:4)), "1, 2, 3 and 4")
   expect_equal(withr::with_language("ca",    and(1:4)), "1, 2, 3 i 4")
   expect_equal(withr::with_language("cy",    and(1:4)), "1, 2, 3 a 4")
@@ -19,9 +25,6 @@ test_that("and", {
   expect_equal(withr::with_language("it",    and(1:4)), "1, 2, 3 e 4")
   expect_equal(withr::with_language("pt",    and(1:4)), "1, 2, 3 e 4")
 
-  names <- c("John", "Paul", "George", "Ringo")
-
-  expect_equal(withr::with_language("en_US", and(names)), "John, Paul, George, and Ringo")
   expect_equal(withr::with_language("en_GB", and(names)), "John, Paul, George and Ringo")
   expect_equal(withr::with_language("ca",    and(names)), "John, Paul, George i Ringo")
   expect_equal(withr::with_language("cy",    and(names)), "John, Paul, George a Ringo")
@@ -34,6 +37,10 @@ test_that("and", {
 
 test_that("or", {
   expect_equal(withr::with_language("en_US", or(1:2)), "1 or 2")
+  expect_equal(withr::with_language("en_US", or(1:4)), "1, 2, 3, or 4")
+
+  skip_on_cran()
+
   expect_equal(withr::with_language("en_GB", or(1:2)), "1 or 2")
   expect_equal(withr::with_language("ca",    or(1:2)), "1 o 2")
   expect_equal(withr::with_language("cy",    or(1:2)), "1 neu 2")
@@ -43,7 +50,6 @@ test_that("or", {
   expect_equal(withr::with_language("it",    or(1:2)), "1 o 2")
   expect_equal(withr::with_language("pt",    or(1:2)), "1 ou 2")
 
-  expect_equal(withr::with_language("en_US", or(1:4)), "1, 2, 3, or 4")
   expect_equal(withr::with_language("en_GB", or(1:4)), "1, 2, 3 or 4")
   expect_equal(withr::with_language("ca",    or(1:4)), "1, 2, 3 o 4")
   expect_equal(withr::with_language("cy",    or(1:4)), "1, 2, 3 neu 4")
@@ -56,6 +62,9 @@ test_that("or", {
 
 test_that("set language manually", {
   expect_equal(and(1:4, language = "en_US"), "1, 2, 3, and 4")
+
+  skip_on_cran()
+
   expect_equal(and(1:4, language = "en_GB"), "1, 2, 3 and 4")
   expect_equal(and(1:4, language = "ca"),    "1, 2, 3 i 4")
   expect_equal(and(1:4, language = "cy"),    "1, 2, 3 a 4")
@@ -68,6 +77,9 @@ test_that("set language manually", {
 
 test_that("languages with unavailable territories fallback", {
   expect_equal(and(1:4, language = "en_PR"), "1, 2, 3, and 4")
+
+  skip_on_cran()
+
   expect_equal(and(1:4, language = "ca_AD"), "1, 2, 3 i 4")
   expect_equal(and(1:4, language = "cy_AR"), "1, 2, 3 a 4")
   expect_equal(and(1:4, language = "es_MX"), "1, 2, 3 y 4")
@@ -79,6 +91,9 @@ test_that("languages with unavailable territories fallback", {
 
 test_that("- convereted to _ in language", {
   expect_equal(and(1:4, language = "en-US"), "1, 2, 3, and 4")
+
+  skip_on_cran()
+
   expect_equal(and(1:4, language = "en-GB"), "1, 2, 3 and 4")
   expect_equal(and(1:4, language = "es-MX"), "1, 2, 3 y 4")
   expect_equal(and(1:4, language = "fr-CA"), "1, 2, 3 et 4")
@@ -86,6 +101,8 @@ test_that("- convereted to _ in language", {
 })
 
 test_that("special handling of vowels in Spanish, Italian, and Welsh", {
+  skip_on_cran()
+
   expect_equal(
     withr::with_language("cy", and(c("t", "u", "v"))),
     "t, u a v"
@@ -133,6 +150,8 @@ test_that("special handling of vowels in Spanish, Italian, and Welsh", {
 })
 
 test_that("special handling of capital vowels in Spanish, Italian, and Welsh", {
+  skip_on_cran()
+
   expect_equal(
     withr::with_language("cy", and(c("T", "U", "V"))),
     "T, U a V"
@@ -180,6 +199,8 @@ test_that("special handling of capital vowels in Spanish, Italian, and Welsh", {
 })
 
 test_that("special handling of formatted vowels in Spanish, Italian, and Welsh", {
+  skip_on_cran()
+
   expect_equal(
     withr::with_language("cy", and(c("_u_", "_v_", "_w_"))),
     "_u_, _v_ ac _w_"
@@ -205,6 +226,8 @@ test_that("special handling of formatted vowels in Spanish, Italian, and Welsh",
 })
 
 test_that("special handling of accented vowels in Spanish, Italian, and Welsh", {
+  skip_on_cran()
+
   expect_equal(and(c("c", "b", "á"), language = "cy"), "c, b ac á")
   expect_equal(and(c("c", "b", "à"), language = "cy"), "c, b ac à")
   expect_equal(and(c("c", "b", "â"), language = "cy"), "c, b ac â")
@@ -255,6 +278,9 @@ test_that("special handling of 8 in Spanish and Italian", {
     withr::with_language("en_US", or(1:8)),
     "1, 2, 3, 4, 5, 6, 7, or 8"
   )
+
+  skip_on_cran()
+
   expect_equal(
     withr::with_language("es", or(1:8)),
     "1, 2, 3, 4, 5, 6, 7 u 8"
