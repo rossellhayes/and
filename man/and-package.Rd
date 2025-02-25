@@ -3,7 +3,6 @@
 \docType{package}
 \name{and-package}
 \alias{and-package}
-\alias{_PACKAGE}
 \title{and: Construct Natural-Language Lists with Internationalization}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
