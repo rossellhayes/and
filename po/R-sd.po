@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: and 0.0.0.9000\n"
-"POT-Creation-Date: 2023-09-23\n"
-"PO-Revision-Date: 2023-09-23\n"
+"POT-Creation-Date: 2025-02-25\n"
+"PO-Revision-Date: 2025-02-25\n"
 "Last-Translator: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language-Team: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language: sd\n"
@@ -12,6 +12,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "{x0}, {x1}{tag(and_start)}"
+msgstr "{x0}، {x1}"
+
+msgid "{x0}, {x1}{tag(and_middle)}"
+msgstr "{x0}، {x1}"
 
 msgid "{x0}, and {x1}{tag(and_end)}"
 msgstr "{x0}، ۽ {x1}"

@@ -162,7 +162,7 @@ links %>%
   kable()
 ```
 
-\* The following English variants use an Oxford comma in addition to `en_GB`: `r and::and(paste0("\x60", sort(str_subset(and_languages$code, "en_(?!GB)")), "\x60"))`.
+\* The following English variants use no Oxford comma: `r and::and(paste0("\x60", sort(str_remove(str_subset(and_languages$code, "en_"), "en_")), "\x60"))`.
 
 #### Partially supported languages
 

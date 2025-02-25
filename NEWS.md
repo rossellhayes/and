@@ -1,17 +1,42 @@
+# and 0.1.6
+
+* Updated `and` with data from the latest Unicode CLDR release: [CLDR 47 beta 1](https://github.com/unicode-org/cldr-json/releases/tag/47.0.0-BETA1).
+
+## New languages
+
+* Akan (`ak`)
+* Anii (`blo`)
+* Interlingue (`ie`)
+* Kangri (`xnr`)
+* Kuvi (`kxv`)
+* Ladin (`lld`)
+* Sichuan Ye (`ii`)
+* Swampy Cree (`csw`)
+* Tajik (`tg`)
+
+## Improved languages
+
+* Amharic (`am`)
+* Igbo (`ig`)
+* Māori (`mi`)
+* Sindhi (`sd`)
+* Tatar (`tt`)
+* Yoruba (`yo`)
+
 # and 0.1.5
 
 * Updated `and` with data from the latest Unicode CLDR release: [CLDR 44 alpha 2](https://github.com/unicode-org/cldr-json/releases/tag/44.0.0-ALPHA2).
 
 ## New languages
 
-* Māori (mi)
-* Venetian (vec)
+* Māori (`mi`)
+* Venetian (`vec`)
 
 ## Improved languages
 
-* Amharic (am)
-* Faroese (fo)
-* Syriac (syr)
+* Amharic (`am`)
+* Faroese (`fo`)
+* Syriac (`syr`)
 
 ## Bug fixes
 

@@ -16,7 +16,7 @@ URL: https://pkg.rossellhayes.com/and/,
     https://github.com/rossellhayes/and
 BugReports: https://github.com/rossellhayes/and/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 Imports: 
     glue,
     rlang (>= 1.0.0)

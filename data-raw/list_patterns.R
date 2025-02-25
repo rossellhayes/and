@@ -5,11 +5,25 @@ library(fs)
 library(glue)
 library(incase)
 library(jsonlite)
-library(poio)
 library(purrr)
 library(rlang)
 library(stringr)
 library(tidyr)
+
+rlang::check_installed("pak")
+if (!rlang::is_installed("poio")) {
+  pak::pkg_install(c(
+    "git::https://bitbucket.org/richierocks/assertive.base.git",
+    "git::https://bitbucket.org/richierocks/assertive.files.git",
+    "git::https://bitbucket.org/richierocks/assertive.numbers.git",
+    "git::https://bitbucket.org/richierocks/assertive.properties.git",
+    "git::https://bitbucket.org/richierocks/assertive.sets.git",
+    "git::https://bitbucket.org/richierocks/assertive.strings.git",
+    "git::https://bitbucket.org/richierocks/assertive.types.git",
+    "RL10N/poio"
+  ))
+}
+library(poio)
 
 tempdir <- tempdir()
 
@@ -22,8 +36,8 @@ archive::archive_extract(
   "https://github.com/unicode-org/cldr-json/archive/refs/heads/main.zip",
   tempdir,
   files = c(
-    "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/languages.json",
-    "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/territories.json",
+    "cldr-json-main/cldr-json/cldr-localenames-full/main/en/languages.json",
+    "cldr-json-main/cldr-json/cldr-localenames-full/main/en/territories.json",
     archive_files %>%
       str_subset(
         "cldr-json-main/cldr-json/cldr-misc-full/main/.+/listPatterns\\.json"
@@ -33,16 +47,20 @@ archive::archive_extract(
 
 languages <- fs::path(
   tempdir,
-  "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/languages.json"
+  "cldr-json-main/cldr-json/cldr-localenames-full/main/en/languages.json"
 ) %>%
   jsonlite::read_json() %>%
   purrr::pluck("main", "en", "localeDisplayNames", "languages") %>%
   unlist() %>%
-  tibble::enframe()
+  tibble::enframe() |>
+  dplyr::bind_rows(
+    tibble::tibble(name = "lld", value = "Ladin")
+  ) |>
+  filter(row_number() == 1, .by = name)
 
 territories <- fs::path(
   tempdir,
-  "cldr-json-main/cldr-json/cldr-localenames-modern/main/en/territories.json"
+  "cldr-json-main/cldr-json/cldr-localenames-full/main/en/territories.json"
 ) %>%
   jsonlite::read_json() %>%
   purrr::pluck("main", "en", "localeDisplayNames", "territories") %>%
