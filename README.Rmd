@@ -27,7 +27,6 @@ withr::local_language("en_US")
 `r badge_license(color = "blueviolet")`
 `r badge_github_actions(action = "R-CMD-check")`
 [![](https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
-`r badge_dependencies()`
 <!-- badges: end -->
 
 **and** constructs language-aware lists in R. It extends the functionality of functions like `knitr::combine_words()` and `glue::glue_collapse()` to make _and_-separated and _or_-separated lists that automatically conform to the user's R language settings.

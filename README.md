@@ -14,7 +14,6 @@ MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-pr
 [![R build
 status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions)
 [![](https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
-[![Dependencies](https://tinyverse.netlify.com/badge/and)](https://cran.r-project.org/package=and)
 <!-- badges: end -->
 
 **and** constructs language-aware lists in R. It extends the
