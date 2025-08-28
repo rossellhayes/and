@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Construct Natural-Language Lists with Internationalization • and</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -23,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">and</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.6.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,44 +81,45 @@
 <span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span></code></pre></div>
 <p>But the Oxford comma is less common in other varieties of English, what happens if I change my R language to British English?</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">local_language</span><span class="op">(</span><span class="st">"en_GB"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span></code></pre></div>
 <p>What about other languages?</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">local_language</span><span class="op">(</span><span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"eu"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span>
+<span></span>
+<span><span class="fu">local_language</span><span class="op">(</span><span class="st">"eu"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George eta Ringo"</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"ko"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "John, Paul, George eta Ringo"</span></span>
+<span></span>
+<span><span class="fu">local_language</span><span class="op">(</span><span class="st">"ko"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George 및 Ringo"</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="handling-the-nuances">Handling the nuances<a class="anchor" aria-label="anchor" href="#handling-the-nuances"></a>
 </h3>
 <p>Creating a list is not as simple as putting a different word between the last two items. For example, in Spanish, the word for <em>and</em> changes if the next word starts with an ⟨i⟩ or ⟨y⟩:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">princess_bride</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Vizzini"</span>, <span class="st">"Fezzik"</span>, <span class="st">"Inigo Montoya"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
+<span><span class="fu">local_language</span><span class="op">(</span><span class="st">"es"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">princess_bride</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Vizzini, Fezzik e Inigo Montoya"</span></span></code></pre></div>
+<p>Special rules like this are implemented for Spanish, Italian, Welsh, and Luxembourgish.</p>
 </div>
 <div class="section level3">
 <h3 id="or-separated-lists">
 <em>or</em>-separated lists<a class="anchor" aria-label="anchor" href="#or-separated-lists"></a>
 </h3>
 <p>Everything <code><a href="reference/and.html">and()</a></code> can do <code><a href="reference/and.html">or()</a></code> can do better. Just use <code><a href="reference/and.html">or()</a></code> to create <em>or</em>-separated lists with all the same contextual awareness.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">outcomes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"win"</span>, <span class="st">"lose"</span>, <span class="st">"draw"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
+<span><span class="fu">local_language</span><span class="op">(</span><span class="st">"en_US"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">or</a></span><span class="op">(</span><span class="va">outcomes</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "win, lose, or draw"</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>LANGUAGE <span class="op">=</span> <span class="st">"ja"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "win, lose, or draw"</span></span>
+<span></span>
+<span><span class="fu">local_language</span><span class="op">(</span><span class="st">"ja"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/and.html">or</a></span><span class="op">(</span><span class="va">outcomes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "win、lose、またはdraw"</span></span></code></pre></div>
 </div>
@@ -121,17 +127,17 @@
 <h3 id="hardcoding-language">Hardcoding language<a class="anchor" aria-label="anchor" href="#hardcoding-language"></a>
 </h3>
 <p>Don’t want the language of you string to depend on the user’s environment variables? You can explicitly set the language using the <code>language</code> argument.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_US"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "John, Paul, George, and Ringo"</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"en_GB"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "John, Paul, George and Ringo"</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"es"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "John, Paul, George y Ringo"</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/and.html">and</a></span><span class="op">(</span><span class="va">names</span>, language <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "John, Paul, George et Ringo"</span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -394,486 +400,492 @@
 <td align="left">1, 2, 3, અથવા 4</td>
 </tr>
 <tr class="even">
+<td align="left"><a href="https://en.wikipedia.org/wiki/Haitian_Creole_language" class="external-link">Haitian Creole</a></td>
+<td align="left"><code>ht</code></td>
+<td align="left">1, 2, 3 et 4</td>
+<td align="left">1, 2, 3 ou 4</td>
+</tr>
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Hausa_language" class="external-link">Hausa</a></td>
 <td align="left"><code>ha</code></td>
 <td align="left">1, 2, 3, da 4</td>
 <td align="left">1, 2, 3 ko 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Hebrew_language" class="external-link">Hebrew</a></td>
 <td align="left"><code>he</code></td>
 <td align="left">‏1, 2, 3 ו4‎</td>
 <td align="left">‏1, 2, 3 או 4‎</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Hindi_language" class="external-link">Hindi</a></td>
 <td align="left"><code>hi</code></td>
 <td align="left">1, 2, 3, और 4</td>
 <td align="left">1, 2, 3 या 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Hungarian_language" class="external-link">Hungarian</a></td>
 <td align="left"><code>hu</code></td>
 <td align="left">1, 2, 3 és 4</td>
 <td align="left">1, 2, 3 vagy 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Icelandic_language" class="external-link">Icelandic</a></td>
 <td align="left"><code>is</code></td>
 <td align="left">1, 2, 3 og 4</td>
 <td align="left">1, 2, 3 eða 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Igbo_language" class="external-link">Igbo</a></td>
 <td align="left"><code>ig</code></td>
 <td align="left">1, 2, 3, na 4</td>
 <td align="left">1, 2, 3, ma ọ bụ 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Indonesian_language" class="external-link">Indonesian</a></td>
 <td align="left"><code>id</code></td>
 <td align="left">1, 2, 3, dan 4</td>
 <td align="left">1, 2, 3, atau 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Interlingua_language" class="external-link">Interlingua</a></td>
 <td align="left"><code>ia</code></td>
 <td align="left">1, 2, 3 e 4</td>
 <td align="left">1, 2, 3 o 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Irish_language" class="external-link">Irish</a></td>
 <td align="left"><code>ga</code></td>
 <td align="left">1, 2, 3 agus 4</td>
 <td align="left">1, 2, 3 nó 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Italian_language" class="external-link">Italian</a></td>
 <td align="left"><code>it</code></td>
 <td align="left">1, 2, 3 e 4</td>
 <td align="left">1, 2, 3 o 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Japanese_language" class="external-link">Japanese</a></td>
 <td align="left"><code>ja</code></td>
 <td align="left">1、2、3、4</td>
 <td align="left">1、2、3、または4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Javanese_language" class="external-link">Javanese</a></td>
 <td align="left"><code>jv</code></td>
 <td align="left">1, 2, 3, lan 4</td>
 <td align="left">1, 2, 3, utowo 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kabuverdianu_language" class="external-link">Kabuverdianu</a></td>
 <td align="left"><code>kea</code></td>
 <td align="left">1, 2, 3 i 4</td>
 <td align="left">1, 2, 3 o 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kaingang_language" class="external-link">Kaingang</a></td>
 <td align="left"><code>kgp</code></td>
 <td align="left">1, 2, 3 kar 4</td>
 <td align="left">1, 2, 3 ketũmỹr 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kangri_language" class="external-link">Kangri</a></td>
 <td align="left"><code>xnr</code></td>
 <td align="left">1, 2, 3, कने 4</td>
 <td align="left">1, 2, 3 या 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kannada_language" class="external-link">Kannada</a></td>
 <td align="left"><code>kn</code></td>
 <td align="left">1, 2, 3, ಮತ್ತು 4</td>
 <td align="left">1, 2, 3, ಅಥವಾ 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kazakh_language" class="external-link">Kazakh</a></td>
 <td align="left"><code>kk</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, не болмаса 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Khmer_language" class="external-link">Khmer</a></td>
 <td align="left"><code>km</code></td>
 <td align="left">1, 2, 3 និង 4</td>
 <td align="left">1, 2, 3 ឬ 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Konkani_language" class="external-link">Konkani</a></td>
 <td align="left"><code>kok</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, वा 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Korean_language" class="external-link">Korean</a></td>
 <td align="left"><code>ko</code></td>
 <td align="left">1, 2, 3 및 4</td>
 <td align="left">1, 2, 3 또는 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kurdish_language" class="external-link">Kurdish</a></td>
 <td align="left"><code>ku</code></td>
 <td align="left">1, 2, 3 û 4</td>
 <td align="left">1, 2, 3 an 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kuvi_language" class="external-link">Kuvi</a></td>
 <td align="left"><code>kxv</code></td>
 <td align="left">1, 2, 3, aḍe 4</td>
 <td align="left">1, 2, 3, aadtẽ 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Kyrgyz_language" class="external-link">Kyrgyz</a></td>
 <td align="left"><code>ky</code></td>
 <td align="left">1, 2, 3 жана 4</td>
 <td align="left">1, 2, 3 же 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Ladin_language" class="external-link">Ladin</a></td>
 <td align="left"><code>lld</code></td>
 <td align="left">1, 2, 3 y 4</td>
 <td align="left">1, 2, 3 o 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Lao_language" class="external-link">Lao</a></td>
 <td align="left"><code>lo</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3 ຫຼື 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Latvian_language" class="external-link">Latvian</a></td>
 <td align="left"><code>lv</code></td>
 <td align="left">1, 2, 3 un 4</td>
 <td align="left">1, 2, 3 vai 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Lithuanian_language" class="external-link">Lithuanian</a></td>
 <td align="left"><code>lt</code></td>
 <td align="left">1, 2, 3 ir 4</td>
 <td align="left">1, 2, 3 ar 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Lower_Sorbian_language" class="external-link">Lower Sorbian</a></td>
 <td align="left"><code>dsb</code></td>
 <td align="left">1, 2, 3 a 4</td>
 <td align="left">1, 2, 3 abo 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Macedonian_language" class="external-link">Macedonian</a></td>
 <td align="left"><code>mk</code></td>
 <td align="left">1, 2, 3 и 4</td>
 <td align="left">1, 2, 3 или 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Malay_language" class="external-link">Malay</a></td>
 <td align="left"><code>ms</code></td>
 <td align="left">1, 2, 3 dan 4</td>
 <td align="left">1, 2, 3, atau 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Malayalam_language" class="external-link">Malayalam</a></td>
 <td align="left"><code>ml</code></td>
 <td align="left">1, 2, 3, 4 എന്നിവ</td>
 <td align="left">1, 2, 3, അല്ലെങ്കിൽ 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Marathi_language" class="external-link">Marathi</a></td>
 <td align="left"><code>mr</code></td>
 <td align="left">1, 2, 3 आणि 4</td>
 <td align="left">1, 2, 3, किंवा 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Mongolian_language" class="external-link">Mongolian</a></td>
 <td align="left"><code>mn</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, 4 зэргийн аль нэг</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/M%C4%81ori_language" class="external-link">Māori</a></td>
 <td align="left"><code>mi</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, 4 rānei</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Nepali_language" class="external-link">Nepali</a></td>
 <td align="left"><code>ne</code></td>
 <td align="left">1,2, 3 र 4</td>
 <td align="left">1, 2, 3, वा 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Nheengatu_language" class="external-link">Nheengatu</a></td>
 <td align="left"><code>yrl</code></td>
 <td align="left">1, 2, 3 asuí 4</td>
 <td align="left">1, 2, 3 u 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Nigerian_Pidgin_language" class="external-link">Nigerian Pidgin</a></td>
 <td align="left"><code>pcm</code></td>
 <td align="left">1, 2, 3, an 4</td>
 <td align="left">1, 2, 3 ọ 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Norwegian_language" class="external-link">Norwegian</a></td>
 <td align="left"><code>no</code></td>
 <td align="left">1, 2, 3 og 4</td>
 <td align="left">1, 2, 3 eller 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Norwegian_Bokm%C3%A5l_language" class="external-link">Norwegian Bokmål</a></td>
 <td align="left"><code>nb</code></td>
 <td align="left">1, 2, 3 og 4</td>
 <td align="left">1, 2, 3 eller 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Norwegian_Nynorsk_language" class="external-link">Norwegian Nynorsk</a></td>
 <td align="left"><code>nn</code></td>
 <td align="left">1, 2, 3 og 4</td>
 <td align="left">1, 2, 3 eller 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Odia_language" class="external-link">Odia</a></td>
 <td align="left"><code>or</code></td>
 <td align="left">1, 2, 3, ଓ 4</td>
 <td align="left">1, 2, 3 କିମ୍ବା 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Persian_language" class="external-link">Persian</a></td>
 <td align="left"><code>fa</code></td>
 <td align="left">‏1،‏ 2،‏ 3، و 4‎</td>
 <td align="left">‏1،‏ 2،‏ 3، یا 4‎</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Polish_language" class="external-link">Polish</a></td>
 <td align="left"><code>pl</code></td>
 <td align="left">1, 2, 3 i 4</td>
 <td align="left">1, 2, 3 lub 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Portuguese_language" class="external-link">Portuguese</a></td>
 <td align="left"><code>pt</code></td>
 <td align="left">1, 2, 3 e 4</td>
 <td align="left">1, 2, 3 ou 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Punjabi_language" class="external-link">Punjabi</a></td>
 <td align="left"><code>pa</code></td>
 <td align="left">1, 2, 3 ਅਤੇ 4</td>
 <td align="left">1, 2, 3 ਜਾਂ 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Quechua_language" class="external-link">Quechua</a></td>
 <td align="left"><code>qu</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, utaq 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Romanian_language" class="external-link">Romanian</a></td>
 <td align="left"><code>ro</code></td>
 <td align="left">1, 2, 3 și 4</td>
 <td align="left">1, 2, 3 sau 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Romansh_language" class="external-link">Romansh</a></td>
 <td align="left"><code>rm</code></td>
 <td align="left">1, 2, 3 e 4</td>
 <td align="left">1, 2, 3 u 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Russian_language" class="external-link">Russian</a></td>
 <td align="left"><code>ru</code></td>
 <td align="left">1, 2, 3 и 4</td>
 <td align="left">1, 2, 3 или 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Sardinian_language" class="external-link">Sardinian</a></td>
 <td align="left"><code>sc</code></td>
 <td align="left">1, 2, 3 e 4</td>
 <td align="left">1, 2, 3 o 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Scottish_Gaelic_language" class="external-link">Scottish Gaelic</a></td>
 <td align="left"><code>gd</code></td>
 <td align="left">1, 2, 3 agus 4</td>
 <td align="left">1, 2, 3 no 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Serbian_language" class="external-link">Serbian</a></td>
 <td align="left"><code>sr</code></td>
 <td align="left">1, 2, 3 и 4</td>
 <td align="left">1, 2, 3 или 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Sichuan_Yi_language" class="external-link">Sichuan Yi</a></td>
 <td align="left"><code>ii</code></td>
 <td align="left">1、2、3ꌋꆀ4</td>
 <td align="left">1、2、3ꅀ4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Sindhi_language" class="external-link">Sindhi</a></td>
 <td align="left"><code>sd</code></td>
 <td align="left">‏1، 2، 3، ۽ 4‎</td>
 <td align="left">‏1, 2, 3, يا 4‎</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Sinhala_language" class="external-link">Sinhala</a></td>
 <td align="left"><code>si</code></td>
 <td align="left">1, 2, 3, සහ 4</td>
 <td align="left">1, 2, 3, හෝ 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Slovak_language" class="external-link">Slovak</a></td>
 <td align="left"><code>sk</code></td>
 <td align="left">1, 2, 3 a 4</td>
 <td align="left">1, 2, 3 alebo 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Slovenian_language" class="external-link">Slovenian</a></td>
 <td align="left"><code>sl</code></td>
 <td align="left">1, 2, 3 in 4</td>
 <td align="left">1, 2, 3 ali 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Somali_language" class="external-link">Somali</a></td>
 <td align="left"><code>so</code></td>
 <td align="left">1, 2, 3 iyo 4</td>
 <td align="left">1, 2, 3 ama 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Spanish_language" class="external-link">Spanish</a></td>
 <td align="left"><code>es</code></td>
 <td align="left">1, 2, 3 y 4</td>
 <td align="left">1, 2, 3 o 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Swahili_language" class="external-link">Swahili</a></td>
 <td align="left"><code>sw</code></td>
 <td align="left">1, 2, 3 na 4</td>
 <td align="left">1, 2, 3 au 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Swampy_Cree_language" class="external-link">Swampy Cree</a></td>
 <td align="left"><code>csw</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, ᐊᐍᑳ 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Swedish_language" class="external-link">Swedish</a></td>
 <td align="left"><code>sv</code></td>
 <td align="left">1, 2, 3 och 4</td>
 <td align="left">1, 2, 3 eller 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Syriac_language" class="external-link">Syriac</a></td>
 <td align="left"><code>syr</code></td>
 <td align="left">‏1 ܘ2 ܘ3 ܘ4‎</td>
 <td align="left">‏1 ܐܘ 2 ܐܘ 3 ܐܘ 4‎</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Tajik_language" class="external-link">Tajik</a></td>
 <td align="left"><code>tg</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, ё 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Tamil_language" class="external-link">Tamil</a></td>
 <td align="left"><code>ta</code></td>
 <td align="left">1, 2, 3 மற்றும் 4</td>
 <td align="left">1, 2, 3 அல்லது 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Tatar_language" class="external-link">Tatar</a></td>
 <td align="left"><code>tt</code></td>
 <td align="left">1, 2, 3 һәм 4</td>
 <td align="left">1, 2, 3, яки 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Telugu_language" class="external-link">Telugu</a></td>
 <td align="left"><code>te</code></td>
 <td align="left">1, 2, 3 మరియు 4</td>
 <td align="left">1, 2, 3 లేదా 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Thai_language" class="external-link">Thai</a></td>
 <td align="left"><code>th</code></td>
 <td align="left">1 2 3 และ4</td>
 <td align="left">1, 2, 3 หรือ 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Tigrinya_language" class="external-link">Tigrinya</a></td>
 <td align="left"><code>ti</code></td>
 <td align="left">1፣ 2፣ 3ን 4ን</td>
 <td align="left">1፣ 2፣ 3 ወይ 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Tongan_language" class="external-link">Tongan</a></td>
 <td align="left"><code>to</code></td>
 <td align="left">1 mo 2 mo 3 mo 4</td>
 <td align="left">1, 2, 3, pē 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Turkish_language" class="external-link">Turkish</a></td>
 <td align="left"><code>tr</code></td>
 <td align="left">1, 2, 3 ve 4</td>
 <td align="left">1, 2, 3 veya 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Turkmen_language" class="external-link">Turkmen</a></td>
 <td align="left"><code>tk</code></td>
 <td align="left">1, 2, 3 we 4</td>
 <td align="left">1, 2, 3 ýa-da 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Ukrainian_language" class="external-link">Ukrainian</a></td>
 <td align="left"><code>uk</code></td>
 <td align="left">1, 2, 3 і 4</td>
 <td align="left">1, 2, 3 або 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Upper_Sorbian_language" class="external-link">Upper Sorbian</a></td>
 <td align="left"><code>hsb</code></td>
 <td align="left">1, 2, 3 a 4</td>
 <td align="left">1, 2, 3 abo 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Urdu_language" class="external-link">Urdu</a></td>
 <td align="left"><code>ur</code></td>
 <td align="left">‏1، 2، 3، اور 4‎</td>
 <td align="left">‏1، 2، 3، یا 4‎</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Uzbek_language" class="external-link">Uzbek</a></td>
 <td align="left"><code>uz</code></td>
 <td align="left">1, 2, 3 va 4</td>
 <td align="left">1, 2, 3 yoki 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Venetian_language" class="external-link">Venetian</a></td>
 <td align="left"><code>vec</code></td>
 <td align="left">1, 2, 3 e 4</td>
 <td align="left">1, 2, 3, o 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Vietnamese_language" class="external-link">Vietnamese</a></td>
 <td align="left"><code>vi</code></td>
 <td align="left">1, 2, 3 và 4</td>
 <td align="left">1, 2, 3 hoặc 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Welsh_language" class="external-link">Welsh</a></td>
 <td align="left"><code>cy</code></td>
 <td align="left">1, 2, 3 a 4</td>
 <td align="left">1, 2, 3 neu 4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Yoruba_language" class="external-link">Yoruba</a></td>
 <td align="left"><code>yo</code></td>
 <td align="left">1, 2, 3, 4</td>
 <td align="left">1, 2, 3, tabi 4</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Yoruba_language" class="external-link">Yoruba (Benin)</a></td>
 <td align="left"><code>yo_BJ</code></td>
 <td align="left">1, 2, 3, 4</td>
@@ -881,7 +893,7 @@
 </tr>
 </tbody>
 </table>
-<p>* The following English variants use no Oxford comma: <code>AG</code>, <code>AI</code>, <code>AT</code>, <code>AU</code>, <code>BB</code>, <code>BE</code>, <code>BM</code>, <code>BS</code>, <code>BW</code>, <code>BZ</code>, <code>CA</code>, <code>CC</code>, <code>CH</code>, <code>CK</code>, <code>CM</code>, <code>CX</code>, <code>CY</code>, <code>DE</code>, <code>DG</code>, <code>DK</code>, <code>DM</code>, <code>ER</code>, <code>FI</code>, <code>FJ</code>, <code>FK</code>, <code>FM</code>, <code>GB</code>, <code>GD</code>, <code>GG</code>, <code>GH</code>, <code>GI</code>, <code>GM</code>, <code>GY</code>, <code>HK</code>, <code>ID</code>, <code>IE</code>, <code>IL</code>, <code>IM</code>, <code>IN</code>, <code>IO</code>, <code>JE</code>, <code>JM</code>, <code>KE</code>, <code>KI</code>, <code>KN</code>, <code>KY</code>, <code>LC</code>, <code>LR</code>, <code>LS</code>, <code>MG</code>, <code>MO</code>, <code>MS</code>, <code>MT</code>, <code>MU</code>, <code>MV</code>, <code>MW</code>, <code>MY</code>, <code>NA</code>, <code>NF</code>, <code>NG</code>, <code>NL</code>, <code>NR</code>, <code>NU</code>, <code>NZ</code>, <code>PG</code>, <code>PK</code>, <code>PN</code>, <code>PW</code>, <code>RW</code>, <code>SB</code>, <code>SC</code>, <code>SD</code>, <code>SE</code>, <code>SG</code>, <code>SH</code>, <code>SI</code>, <code>SL</code>, <code>SS</code>, <code>SX</code>, <code>SZ</code>, <code>TC</code>, <code>TK</code>, <code>TO</code>, <code>TT</code>, <code>TV</code>, <code>TZ</code>, <code>UG</code>, <code>VC</code>, <code>VG</code>, <code>VU</code>, <code>WS</code>, <code>ZA</code>, <code>ZM</code>, and <code>ZW</code>.</p>
+<p>* The following English variants use no Oxford comma: <code>AG</code>, <code>AI</code>, <code>AT</code>, <code>AU</code>, <code>BB</code>, <code>BE</code>, <code>BM</code>, <code>BS</code>, <code>BW</code>, <code>BZ</code>, <code>CA</code>, <code>CC</code>, <code>CH</code>, <code>CK</code>, <code>CM</code>, <code>CX</code>, <code>CY</code>, <code>CZ</code>, <code>DE</code>, <code>DG</code>, <code>DK</code>, <code>DM</code>, <code>ER</code>, <code>ES</code>, <code>FI</code>, <code>FJ</code>, <code>FK</code>, <code>FM</code>, <code>FR</code>, <code>GB</code>, <code>GD</code>, <code>GG</code>, <code>GH</code>, <code>GI</code>, <code>GM</code>, <code>GS</code>, <code>GY</code>, <code>HK</code>, <code>HU</code>, <code>ID</code>, <code>IE</code>, <code>IL</code>, <code>IM</code>, <code>IN</code>, <code>IO</code>, <code>IT</code>, <code>JE</code>, <code>JM</code>, <code>KE</code>, <code>KI</code>, <code>KN</code>, <code>KY</code>, <code>LC</code>, <code>LR</code>, <code>LS</code>, <code>MG</code>, <code>MO</code>, <code>MS</code>, <code>MT</code>, <code>MU</code>, <code>MV</code>, <code>MW</code>, <code>MY</code>, <code>NA</code>, <code>NF</code>, <code>NG</code>, <code>NL</code>, <code>NO</code>, <code>NR</code>, <code>NU</code>, <code>NZ</code>, <code>PG</code>, <code>PK</code>, <code>PL</code>, <code>PN</code>, <code>PT</code>, <code>PW</code>, <code>RO</code>, <code>RW</code>, <code>SB</code>, <code>SC</code>, <code>SD</code>, <code>SE</code>, <code>SG</code>, <code>SH</code>, <code>SI</code>, <code>SK</code>, <code>SL</code>, <code>SS</code>, <code>SX</code>, <code>SZ</code>, <code>TC</code>, <code>TK</code>, <code>TO</code>, <code>TT</code>, <code>TV</code>, <code>TZ</code>, <code>UG</code>, <code>VC</code>, <code>VG</code>, <code>VU</code>, <code>WS</code>, <code>ZA</code>, <code>ZM</code>, and <code>ZW</code>.</p>
 </div>
 <div class="section level4">
 <h4 id="partially-supported-languages">Partially supported languages<a class="anchor" aria-label="anchor" href="#partially-supported-languages"></a>
@@ -948,7 +960,7 @@
 <tr class="even">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Luxembourgish_language" class="external-link">Luxembourgish</a></td>
 <td align="left"><code>lb</code></td>
-<td align="left">1, 2, 3 a(n) 4</td>
+<td align="left">1, 2, 3 a 4</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="https://en.wikipedia.org/wiki/Maithili_language" class="external-link">Maithili</a></td>
@@ -1067,7 +1079,7 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Alexander Rossell Hayes <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9412-0457" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Alexander Rossell Hayes <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0001-9412-0457" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -1093,7 +1105,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
