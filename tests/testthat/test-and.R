@@ -100,7 +100,7 @@ test_that("- convereted to _ in language", {
   expect_equal(and(1:4, language = "pt-BR"), "1, 2, 3 e 4")
 })
 
-test_that("special handling of vowels in Spanish, Italian, and Welsh", {
+test_that("special handling for Spanish, Italian, Welsh, and Luxembourgish", {
   skip_on_cran()
 
   expect_equal(
@@ -147,9 +147,26 @@ test_that("special handling of vowels in Spanish, Italian, and Welsh", {
     withr::with_language("it", or(c("m", "n", "o"))),
     "m, n od o"
   )
+
+  expect_equal(
+    withr::with_language("lb", and(c("w", "x", "y"))),
+    "w, x a y"
+  )
+  expect_equal(
+    withr::with_language("lb", and(c("w", "x", "yan"))),
+    "w, x a yan"
+  )
+  expect_equal(
+    withr::with_language("lb", and(c("w", "x", "yves"))),
+    "w, x an yves"
+  )
+  expect_equal(
+    withr::with_language("lb", and(c("x", "y", "z"))),
+    "x, y an z"
+  )
 })
 
-test_that("special handling of capital vowels in Spanish, Italian, and Welsh", {
+test_that("special handling of capitals in Spanish, Italian, Welsh, and Luxembourgish", {
   skip_on_cran()
 
   expect_equal(
@@ -196,6 +213,15 @@ test_that("special handling of capital vowels in Spanish, Italian, and Welsh", {
     withr::with_language("it", or(c("M", "N", "O"))),
     "M, N od O"
   )
+
+  expect_equal(
+    withr::with_language("lb", and(c("W", "X", "Y"))),
+    "W, X a Y"
+  )
+  expect_equal(
+    withr::with_language("lb", and(c("X", "Y", "Z"))),
+    "X, Y an Z"
+  )
 })
 
 test_that("special handling of formatted vowels in Spanish, Italian, and Welsh", {
@@ -225,7 +251,7 @@ test_that("special handling of formatted vowels in Spanish, Italian, and Welsh",
   )
 })
 
-test_that("special handling of accented vowels in Spanish, Italian, and Welsh", {
+test_that("special handling of accented letters in Spanish, Italian, Welsh, and Luxembourgish", {
   skip_on_cran()
 
   expect_equal(and(c("c", "b", "á"), language = "cy"), "c, b ac á")
@@ -271,6 +297,15 @@ test_that("special handling of accented vowels in Spanish, Italian, and Welsh", 
   expect_equal(or(c("m", "n", "ò"), language = "it"), "m, n od ò")
   expect_equal(or(c("m", "n", "ô"), language = "it"), "m, n od ô")
   expect_equal(or(c("m", "n", "ö"), language = "it"), "m, n od ö")
+
+  expect_equal(and(c("b", "c", "đ"), language = "lb"), "b, c an đ")
+  expect_equal(and(c("c", "d", "ɛ"), language = "lb"), "c, d an ɛ")
+  expect_equal(and(c("f", "g", "ĥ"), language = "lb"), "f, g an ĥ")
+  expect_equal(and(c("g", "h", "ı"), language = "lb"), "g, h an ı")
+  expect_equal(and(c("l", "m", "ń"), language = "lb"), "l, m an ń")
+  expect_equal(and(c("m", "n", "ö"), language = "lb"), "m, n an ö")
+  expect_equal(and(c("s", "t", "ư"), language = "lb"), "s, t an ư")
+  expect_equal(and(c("x", "y", "ź"), language = "lb"), "x, y an ź")
 })
 
 test_that("special handling of 8 in Spanish and Italian", {
