@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: and 0.0.0.9000\n"
-"POT-Creation-Date: 2025-02-25\n"
-"PO-Revision-Date: 2025-02-25\n"
+"POT-Creation-Date: 2025-08-28\n"
+"PO-Revision-Date: 2025-08-28\n"
 "Last-Translator: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language-Team: Alexander Rossell Hayes <alexander@rossellhayes.com>\n"
 "Language: lb\n"
@@ -14,8 +14,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "{x0}, and {x1}{tag(and_end)}"
-msgstr "{x0} a(n) {x1}"
+msgstr "{x0} {if (grepl('^[^a-z0-9]*([aeioudhntz012389]|y[bcdfghjklmnpqrstvwxz])', normalize(x1))) 'an' else 'a'} {x1}"
 
 msgid "{x0} and {x1}{tag(and_2)}"
-msgstr "{x0} a(n) {x1}"
+msgstr "{x0} {if (grepl('^[^a-z0-9]*([aeioudhntz012389]|y[bcdfghjklmnpqrstvwxz])', normalize(x1))) 'an' else 'a'} {x1}"
 

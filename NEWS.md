@@ -6,6 +6,10 @@
 
 * Haitian Creole (`ht`)
 
+## Improved languages
+
+* Luxembourgish (`lb`)
+
 # and 0.1.6
 
 * Updated `and` with data from the latest Unicode CLDR release: [CLDR 47 beta 1](https://github.com/unicode-org/cldr-json/releases/tag/47.0.0-BETA1).

@@ -86,6 +86,9 @@ and(princess_bride)
 #> [1] "Vizzini, Fezzik e Inigo Montoya"
 ```
 
+Special rules like this are implemented for Spanish, Italian, Welsh, and
+Luxembourgish.
+
 ### *or*-separated lists
 
 Everything `and()` can do `or()` can do better. Just use `or()` to

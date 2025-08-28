@@ -233,6 +233,13 @@ list_glue_patterns[list_glue_patterns$language == "it", ] <-
     or_2 = or_end
   )
 
+list_glue_patterns[list_glue_patterns$language == "lb", ] <-
+  list_glue_patterns[list_glue_patterns$language == "lb", ] %>%
+  mutate(
+    and_end = "{x0} {if (grepl('^[^a-z0-9]*([aeioudhntz012389]|y[bcdfghjklmnpqrstvwxz])', normalize(x1))) 'an' else 'a'} {x1}",
+    and_2 = and_end
+  )
+
 list_glue_patterns <- list_glue_patterns %>%
   rename_with(
     .cols = c(ends_with("start"), ends_with("middle")),

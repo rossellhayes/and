@@ -91,6 +91,8 @@ local_language("es")
 and(princess_bride)
 ```
 
+Special rules like this are implemented for Spanish, Italian, Welsh, and Luxembourgish.
+
 ### _or_-separated lists
 
 Everything `and()` can do `or()` can do better. Just use `or()` to create _or_-separated lists with all the same contextual awareness.
