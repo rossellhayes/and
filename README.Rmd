@@ -50,6 +50,7 @@ pak::pkg_install("rossellhayes/and")
 
 ```{r include = FALSE}
 library(and)
+library(withr)
 ```
 
 `and()` creates "and"-separated lists from vectors.
@@ -62,18 +63,20 @@ and(names)
 But the Oxford comma is less common in other varieties of English, what happens if I change my R language to British English?
 
 ```{r}
-Sys.setenv(LANGUAGE = "en_GB")
+local_language("en_GB")
 and(names)
 ```
 
 What about other languages?
 
 ```{r}
-Sys.setenv(LANGUAGE = "es")
+local_language("es")
 and(names)
-Sys.setenv(LANGUAGE = "eu")
+
+local_language("eu")
 and(names)
-Sys.setenv(LANGUAGE = "ko")
+
+local_language("ko")
 and(names)
 ```
 
@@ -84,7 +87,7 @@ For example, in Spanish, the word for _and_ changes if the next word starts with
 
 ```{r}
 princess_bride <- c("Vizzini", "Fezzik", "Inigo Montoya")
-Sys.setenv(LANGUAGE = "es")
+local_language("es")
 and(princess_bride)
 ```
 
@@ -94,9 +97,10 @@ Everything `and()` can do `or()` can do better. Just use `or()` to create _or_-s
 
 ```{r}
 outcomes <- c("win", "lose", "draw")
-Sys.setenv(LANGUAGE = "en_US")
+local_language("en_US")
 or(outcomes)
-Sys.setenv(LANGUAGE = "ja")
+
+local_language("ja")
 or(outcomes)
 ```
 
@@ -107,8 +111,11 @@ You can explicitly set the language using the `language` argument.
 
 ```{r}
 and(names, language = "en_US")
+
 and(names, language = "en_GB")
+
 and(names, language = "es")
+
 and(names, language = "fr")
 ```
 
