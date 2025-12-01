@@ -1,4 +1,11 @@
 test_that("and", {
+  names <- c("John", "Paul", "George", "Ringo")
+
+  expect_equal(withr::with_language("en_US", and(1:2)), "1 and 2")
+  expect_equal(withr::with_language("en_US", and(1:4)), "1, 2, 3, and 4")
+  expect_equal(withr::with_language("en_US", and(names)), "John, Paul, George, and Ringo")
+
+  skip_on_cran()
   skip_if_not(isTRUE(capabilities("NLS")[[1]]))
 
   # `with_language()` doesn't work when locale is set to C. At the
@@ -13,14 +20,6 @@ test_that("and", {
     lang <- Sys.getenv("LANG", "")
     skip_if(lang %in% c("C", "C.UTF-8"))
   }
-
-  names <- c("John", "Paul", "George", "Ringo")
-
-  expect_equal(withr::with_language("en_US", and(1:2)), "1 and 2")
-  expect_equal(withr::with_language("en_US", and(1:4)), "1, 2, 3, and 4")
-  expect_equal(withr::with_language("en_US", and(names)), "John, Paul, George, and Ringo")
-
-  skip_on_cran()
 
   expect_equal(withr::with_language("en_GB", and(1:2)), "1 and 2")
   expect_equal(withr::with_language("ca",    and(1:2)), "1 i 2")
@@ -51,12 +50,11 @@ test_that("and", {
 })
 
 test_that("or", {
-  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
+  expect_equal(withr::with_language("en_US", or(1:2)), "1 or 2")
+  expect_equal(withr::with_language("en_US", or(1:4)), "1, 2, 3, or 4")
 
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
+  skip_on_cran()
+  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
 
   lc_all <- Sys.getenv("LC_ALL", "")
   skip_if(lc_all %in% c("C", "C.UTF-8"))
@@ -65,11 +63,6 @@ test_that("or", {
     lang <- Sys.getenv("LANG", "")
     skip_if(lang %in% c("C", "C.UTF-8"))
   }
-
-  expect_equal(withr::with_language("en_US", or(1:2)), "1 or 2")
-  expect_equal(withr::with_language("en_US", or(1:4)), "1, 2, 3, or 4")
-
-  skip_on_cran()
 
   expect_equal(withr::with_language("en_GB", or(1:2)), "1 or 2")
   expect_equal(withr::with_language("ca",    or(1:2)), "1 o 2")
@@ -94,6 +87,15 @@ test_that("set language manually", {
   expect_equal(and(1:4, language = "en_US"), "1, 2, 3, and 4")
 
   skip_on_cran()
+  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
+
+  lc_all <- Sys.getenv("LC_ALL", "")
+  skip_if(lc_all %in% c("C", "C.UTF-8"))
+
+  if (lc_all == "") {
+    lang <- Sys.getenv("LANG", "")
+    skip_if(lang %in% c("C", "C.UTF-8"))
+  }
 
   expect_equal(and(1:4, language = "en_GB"), "1, 2, 3 and 4")
   expect_equal(and(1:4, language = "ca"),    "1, 2, 3 i 4")
@@ -109,6 +111,15 @@ test_that("languages with unavailable territories fallback", {
   expect_equal(and(1:4, language = "en_PR"), "1, 2, 3, and 4")
 
   skip_on_cran()
+  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
+
+  lc_all <- Sys.getenv("LC_ALL", "")
+  skip_if(lc_all %in% c("C", "C.UTF-8"))
+
+  if (lc_all == "") {
+    lang <- Sys.getenv("LANG", "")
+    skip_if(lang %in% c("C", "C.UTF-8"))
+  }
 
   expect_equal(and(1:4, language = "ca_AD"), "1, 2, 3 i 4")
   expect_equal(and(1:4, language = "cy_AR"), "1, 2, 3 a 4")
@@ -123,6 +134,15 @@ test_that("- convereted to _ in language", {
   expect_equal(and(1:4, language = "en-US"), "1, 2, 3, and 4")
 
   skip_on_cran()
+  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
+
+  lc_all <- Sys.getenv("LC_ALL", "")
+  skip_if(lc_all %in% c("C", "C.UTF-8"))
+
+  if (lc_all == "") {
+    lang <- Sys.getenv("LANG", "")
+    skip_if(lang %in% c("C", "C.UTF-8"))
+  }
 
   expect_equal(and(1:4, language = "en-GB"), "1, 2, 3 and 4")
   expect_equal(and(1:4, language = "es-MX"), "1, 2, 3 y 4")
@@ -132,13 +152,7 @@ test_that("- convereted to _ in language", {
 
 test_that("special handling for Spanish, Italian, Welsh, and Luxembourgish", {
   skip_on_cran()
-
   skip_if_not(isTRUE(capabilities("NLS")[[1]]))
-
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
 
   lc_all <- Sys.getenv("LC_ALL", "")
   skip_if(lc_all %in% c("C", "C.UTF-8"))
@@ -213,13 +227,7 @@ test_that("special handling for Spanish, Italian, Welsh, and Luxembourgish", {
 
 test_that("special handling of capitals in Spanish, Italian, Welsh, and Luxembourgish", {
   skip_on_cran()
-
   skip_if_not(isTRUE(capabilities("NLS")[[1]]))
-
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
 
   lc_all <- Sys.getenv("LC_ALL", "")
   skip_if(lc_all %in% c("C", "C.UTF-8"))
@@ -286,13 +294,7 @@ test_that("special handling of capitals in Spanish, Italian, Welsh, and Luxembou
 
 test_that("special handling of formatted vowels in Spanish, Italian, and Welsh", {
   skip_on_cran()
-
   skip_if_not(isTRUE(capabilities("NLS")[[1]]))
-
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
 
   lc_all <- Sys.getenv("LC_ALL", "")
   skip_if(lc_all %in% c("C", "C.UTF-8"))
@@ -328,6 +330,15 @@ test_that("special handling of formatted vowels in Spanish, Italian, and Welsh",
 
 test_that("special handling of accented letters in Spanish, Italian, Welsh, and Luxembourgish", {
   skip_on_cran()
+  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
+
+  lc_all <- Sys.getenv("LC_ALL", "")
+  skip_if(lc_all %in% c("C", "C.UTF-8"))
+
+  if (lc_all == "") {
+    lang <- Sys.getenv("LANG", "")
+    skip_if(lang %in% c("C", "C.UTF-8"))
+  }
 
   expect_equal(and(c("c", "b", "á"), language = "cy"), "c, b ac á")
   expect_equal(and(c("c", "b", "à"), language = "cy"), "c, b ac à")
@@ -384,12 +395,8 @@ test_that("special handling of accented letters in Spanish, Italian, Welsh, and 
 })
 
 test_that("special handling of 8 in Spanish and Italian", {
+  skip_on_cran()
   skip_if_not(isTRUE(capabilities("NLS")[[1]]))
-
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
 
   lc_all <- Sys.getenv("LC_ALL", "")
   skip_if(lc_all %in% c("C", "C.UTF-8"))
@@ -398,13 +405,6 @@ test_that("special handling of 8 in Spanish and Italian", {
     lang <- Sys.getenv("LANG", "")
     skip_if(lang %in% c("C", "C.UTF-8"))
   }
-
-  expect_equal(
-    withr::with_language("en_US", or(1:8)),
-    "1, 2, 3, 4, 5, 6, 7, or 8"
-  )
-
-  skip_on_cran()
 
   expect_equal(
     withr::with_language("es", or(1:8)),
@@ -446,21 +446,6 @@ test_that("ensure `conjoin()` always returns a length 1 string", {
 })
 
 test_that("invalid language falls back to English", {
-  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
-
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
-
-  lc_all <- Sys.getenv("LC_ALL", "")
-  skip_if(lc_all %in% c("C", "C.UTF-8"))
-
-  if (lc_all == "") {
-    lang <- Sys.getenv("LANG", "")
-    skip_if(lang %in% c("C", "C.UTF-8"))
-  }
-
   expect_equal(
     withr::with_language("zxx", and(1:2)),
     withr::with_language("en", and(1:2))
@@ -499,21 +484,6 @@ test_that("unset language", {
 })
 
 test_that("supports factors", {
-  skip_if_not(isTRUE(capabilities("NLS")[[1]]))
-
-  # `with_language()` doesn't work when locale is set to C. At the
-  # same time it's perilous to try and set the locale in a
-  # cross-platform way, so just skip these tests in that case.
-  # See https://github.com/r-lib/withr/issues/236
-
-  lc_all <- Sys.getenv("LC_ALL", "")
-  skip_if(lc_all %in% c("C", "C.UTF-8"))
-
-  if (lc_all == "") {
-    lang <- Sys.getenv("LANG", "")
-    skip_if(lang %in% c("C", "C.UTF-8"))
-  }
-
   withr::local_language("en_US")
 
   expect_equal(and(factor(c("one", "two", "three"))), "one, two, and three")
