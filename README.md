@@ -11,9 +11,9 @@ badge](https://rossellhayes.r-universe.dev/badges/and)](https://rossellhayes.r-u
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![License:
 MIT](https://img.shields.io/badge/license-MIT-blueviolet.svg)](https://cran.r-project.org/web/licenses/MIT)
-[![R build
-status](https://github.com/rossellhayes/and/workflows/R-CMD-check/badge.svg)](https://github.com/rossellhayes/and/actions)
-[![](https://codecov.io/gh/rossellhayes/and/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
+[![R-CMD-check](https://github.com/rossellhayes/and/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rossellhayes/and/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/rossellhayes/and/graph/badge.svg)](https://app.codecov.io/gh/rossellhayes/and)
 <!-- badges: end -->
 
 **and** constructs language-aware lists in R. It extends the
