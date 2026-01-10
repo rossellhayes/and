@@ -51,7 +51,7 @@ Language data is derived from the [Unicode Common Locale Data Repository
 
 ``` r
 and_languages
-#> # A tibble: 251 × 7
+#> # A tibble: 260 × 7
 #>    language  code  example_and_2 example_and_4 example_or_2 example_or_4 support
 #>    <chr>     <chr> <chr>         <chr>         <chr>        <chr>        <chr>  
 #>  1 Afrikaans af    1 en 2        1, 2, 3 en 4  1 of 2       1, 2, 3 of 4 full   
@@ -64,5 +64,5 @@ and_languages
 #>  8 Assamese  as    1 আৰু 2        1, 2, 3 আৰু 4  1 বা 2       1, 2, 3 বা 4 full   
 #>  9 Asturian  ast   1 y 2         1, 2, 3 y 4   1 o 2        1, 2, 3 o 4  full   
 #> 10 Azerbaij… az    1 və 2        1, 2, 3 və 4  1 yaxud 2    1, 2, 3, ya… full   
-#> # ℹ 241 more rows
+#> # ℹ 250 more rows
 ```

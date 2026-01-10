@@ -1,6 +1,28 @@
 # Changelog
 
+## and (development version)
+
+- Updated `and` with data from the latest Unicode CLDR pre-release:
+  [CLDR
+  48.1.0](https://github.com/unicode-org/cldr-json/releases/tag/48.1.0).
+
+### New fully supported languages
+
+- Bashkir (`ba`)
+- English (Estonia, Georgia, Lithuania, Latvia, and Ukraine) (`en_EE`,
+  `en_GE`, `en_LT`, `en_LV`, and `en_UA`)
+- Esperanto (`eo`)
+- Sicilian (`scn`)
+- Shan (`shn`)
+
+### Improved languages
+
+- Malayalam (`ml`)
+- Nepali (`ne`)
+
 ## and 0.1.7
+
+CRAN release: 2025-12-01
 
 - Updated `and` with data from the latest Unicode CLDR release: [CLDR
   47](https://github.com/unicode-org/cldr-json/releases/tag/47.0.0).

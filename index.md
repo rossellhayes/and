@@ -133,6 +133,7 @@ and(names, language = "fr")
 | [Asturian](https://en.wikipedia.org/wiki/Asturian_language)                                                                    | `ast`            | 1, 2, 3 y 4      | 1, 2, 3 o 4                |
 | [Azerbaijani](https://en.wikipedia.org/wiki/Azerbaijani_language)                                                              | `az`             | 1, 2, 3 və 4     | 1, 2, 3, yaxud 4           |
 | [Bangla](https://en.wikipedia.org/wiki/Bangla_language)                                                                        | `bn`             | 1, 2, 3 এবং 4    | 1, 2, 3, বা 4              |
+| [Bashkir](https://en.wikipedia.org/wiki/Bashkir_language)                                                                      | `ba`             | 1, 2, 3 һәм 4    | 1, 2, 3 йәки 4             |
 | [Basque](https://en.wikipedia.org/wiki/Basque_language)                                                                        | `eu`             | 1, 2, 3 eta 4    | 1, 2, 3 edo 4              |
 | [Belarusian](https://en.wikipedia.org/wiki/Belarusian_language)                                                                | `be`             | 1, 2, 3 і 4      | 1, 2, 3 ці 4               |
 | [Bosnian](https://en.wikipedia.org/wiki/Bosnian_language)                                                                      | `bs`             | 1, 2, 3 i 4      | 1, 2, 3 ili 4              |
@@ -151,6 +152,7 @@ and(names, language = "fr")
 | [Dutch](https://en.wikipedia.org/wiki/Dutch_language)                                                                          | `nl`             | 1, 2, 3 en 4     | 1, 2, 3 of 4               |
 | [English](https://en.wikipedia.org/wiki/English_language) (with [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma))    | `en`             | 1, 2, 3, and 4   | 1, 2, 3, or 4              |
 | [English](https://en.wikipedia.org/wiki/English_language) (without [Oxford comma](https://en.wikipedia.org/wiki/Serial_comma)) | `en_GB` et al.\* | 1, 2, 3 and 4    | 1, 2, 3 or 4               |
+| [Esperanto](https://en.wikipedia.org/wiki/Esperanto_language)                                                                  | `eo`             | 1, 2, 3 kaj 4    | 1, 2, 3 aŭ 4               |
 | [Estonian](https://en.wikipedia.org/wiki/Estonian_language)                                                                    | `et`             | 1, 2, 3 ja 4     | 1, 2, 3 või 4              |
 | [Faroese](https://en.wikipedia.org/wiki/Faroese_language)                                                                      | `fo`             | 1, 2, 3, og 4    | 1, 2, 3, ella 4            |
 | [Filipino](https://en.wikipedia.org/wiki/Filipino_language)                                                                    | `fil`            | 1, 2, 3, at 4    | 1, 2, 3, o 4               |
@@ -192,11 +194,11 @@ and(names, language = "fr")
 | [Lower Sorbian](https://en.wikipedia.org/wiki/Lower_Sorbian_language)                                                          | `dsb`            | 1, 2, 3 a 4      | 1, 2, 3 abo 4              |
 | [Macedonian](https://en.wikipedia.org/wiki/Macedonian_language)                                                                | `mk`             | 1, 2, 3 и 4      | 1, 2, 3 или 4              |
 | [Malay](https://en.wikipedia.org/wiki/Malay_language)                                                                          | `ms`             | 1, 2, 3 dan 4    | 1, 2, 3, atau 4            |
-| [Malayalam](https://en.wikipedia.org/wiki/Malayalam_language)                                                                  | `ml`             | 1, 2, 3, 4 എന്നിവ | 1, 2, 3, അല്ലെങ്കിൽ 4        |
+| [Malayalam](https://en.wikipedia.org/wiki/Malayalam_language)                                                                  | `ml`             | 1, 2, 3, 4       | 1, 2, 3, അല്ലെങ്കിൽ 4        |
 | [Marathi](https://en.wikipedia.org/wiki/Marathi_language)                                                                      | `mr`             | 1, 2, 3 आणि 4    | 1, 2, 3, किंवा 4            |
 | [Mongolian](https://en.wikipedia.org/wiki/Mongolian_language)                                                                  | `mn`             | 1, 2, 3, 4       | 1, 2, 3, 4 зэргийн аль нэг |
 | [Māori](https://en.wikipedia.org/wiki/M%C4%81ori_language)                                                                     | `mi`             | 1, 2, 3, 4       | 1, 2, 3, 4 rānei           |
-| [Nepali](https://en.wikipedia.org/wiki/Nepali_language)                                                                        | `ne`             | 1,2, 3 र 4       | 1, 2, 3, वा 4              |
+| [Nepali](https://en.wikipedia.org/wiki/Nepali_language)                                                                        | `ne`             | 1, 2, 3 र 4      | 1, 2, 3, वा 4              |
 | [Nheengatu](https://en.wikipedia.org/wiki/Nheengatu_language)                                                                  | `yrl`            | 1, 2, 3 asuí 4   | 1, 2, 3 u 4                |
 | [Nigerian Pidgin](https://en.wikipedia.org/wiki/Nigerian_Pidgin_language)                                                      | `pcm`            | 1, 2, 3, an 4    | 1, 2, 3 ọ 4                |
 | [Norwegian](https://en.wikipedia.org/wiki/Norwegian_language)                                                                  | `no`             | 1, 2, 3 og 4     | 1, 2, 3 eller 4            |
@@ -214,7 +216,9 @@ and(names, language = "fr")
 | [Sardinian](https://en.wikipedia.org/wiki/Sardinian_language)                                                                  | `sc`             | 1, 2, 3 e 4      | 1, 2, 3 o 4                |
 | [Scottish Gaelic](https://en.wikipedia.org/wiki/Scottish_Gaelic_language)                                                      | `gd`             | 1, 2, 3 agus 4   | 1, 2, 3 no 4               |
 | [Serbian](https://en.wikipedia.org/wiki/Serbian_language)                                                                      | `sr`             | 1, 2, 3 и 4      | 1, 2, 3 или 4              |
+| [Shan](https://en.wikipedia.org/wiki/Shan_language)                                                                            | `shn`            | 1၊ 2၊ 3 လႄႈ 4    | 1၊ 2၊ 3၊ ႁိုဝ် 4              |
 | [Sichuan Yi](https://en.wikipedia.org/wiki/Sichuan_Yi_language)                                                                | `ii`             | 1、2、3ꌋꆀ4     | 1、2、3ꅀ4                 |
+| [Sicilian](https://en.wikipedia.org/wiki/Sicilian_language)                                                                    | `scn`            | 1, 2, 3 e 4      | 1, 2, 3 o 4                |
 | [Sindhi](https://en.wikipedia.org/wiki/Sindhi_language)                                                                        | `sd`             | ‏1، 2، 3، ۽ 4‎     | ‏1, 2, 3, يا 4‎              |
 | [Sinhala](https://en.wikipedia.org/wiki/Sinhala_language)                                                                      | `si`             | 1, 2, 3, සහ 4    | 1, 2, 3, හෝ 4              |
 | [Slovak](https://en.wikipedia.org/wiki/Slovak_language)                                                                        | `sk`             | 1, 2, 3 a 4      | 1, 2, 3 alebo 4            |
@@ -246,14 +250,14 @@ and(names, language = "fr")
 
 \* The following English variants use no Oxford comma: `AG`, `AI`, `AT`,
 `AU`, `BB`, `BE`, `BM`, `BS`, `BW`, `BZ`, `CA`, `CC`, `CH`, `CK`, `CM`,
-`CX`, `CY`, `CZ`, `DE`, `DG`, `DK`, `DM`, `ER`, `ES`, `FI`, `FJ`, `FK`,
-`FM`, `FR`, `GB`, `GD`, `GG`, `GH`, `GI`, `GM`, `GS`, `GY`, `HK`, `HU`,
-`ID`, `IE`, `IL`, `IM`, `IN`, `IO`, `IT`, `JE`, `JM`, `KE`, `KI`, `KN`,
-`KY`, `LC`, `LR`, `LS`, `MG`, `MO`, `MS`, `MT`, `MU`, `MV`, `MW`, `MY`,
-`NA`, `NF`, `NG`, `NL`, `NO`, `NR`, `NU`, `NZ`, `PG`, `PK`, `PL`, `PN`,
-`PT`, `PW`, `RO`, `RW`, `SB`, `SC`, `SD`, `SE`, `SG`, `SH`, `SI`, `SK`,
-`SL`, `SS`, `SX`, `SZ`, `TC`, `TK`, `TO`, `TT`, `TV`, `TZ`, `UG`, `VC`,
-`VG`, `VU`, `WS`, `ZA`, `ZM`, and `ZW`.
+`CX`, `CY`, `CZ`, `DE`, `DG`, `DK`, `DM`, `EE`, `ER`, `ES`, `FI`, `FJ`,
+`FK`, `FM`, `FR`, `GB`, `GD`, `GE`, `GG`, `GH`, `GI`, `GM`, `GS`, `GY`,
+`HK`, `HU`, `ID`, `IE`, `IL`, `IM`, `IN`, `IO`, `IT`, `JE`, `JM`, `KE`,
+`KI`, `KN`, `KY`, `LC`, `LR`, `LS`, `LT`, `LV`, `MG`, `MO`, `MS`, `MT`,
+`MU`, `MV`, `MW`, `MY`, `NA`, `NF`, `NG`, `NL`, `NO`, `NR`, `NU`, `NZ`,
+`PG`, `PK`, `PL`, `PN`, `PT`, `PW`, `RO`, `RW`, `SB`, `SC`, `SD`, `SE`,
+`SG`, `SH`, `SI`, `SK`, `SL`, `SS`, `SX`, `SZ`, `TC`, `TK`, `TO`, `TT`,
+`TV`, `TZ`, `UA`, `UG`, `VC`, `VG`, `VU`, `WS`, `ZA`, `ZM`, and `ZW`.
 
 #### Partially supported languages
 

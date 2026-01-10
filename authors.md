@@ -15,14 +15,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/rossellhayes/and/blob/main/DESCRIPTION)
 
-Rossell Hayes A (2025). *and: Construct Natural-Language Lists with
-Internationalization*. R package version 0.1.7,
+Rossell Hayes A (2026). *and: Construct Natural-Language Lists with
+Internationalization*. R package version 0.1.7.9000,
 <https://pkg.rossellhayes.com/and/>.
 
     @Manual{,
       title = {and: Construct Natural-Language Lists with Internationalization},
       author = {Alexander {Rossell Hayes}},
-      year = {2025},
-      note = {R package version 0.1.7},
+      year = {2026},
+      note = {R package version 0.1.7.9000},
       url = {https://pkg.rossellhayes.com/and/},
     }
