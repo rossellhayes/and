@@ -1,6 +1,6 @@
-# and (development version)
+# and 0.1.8
 
-* Updated `and` with data from the latest Unicode CLDR pre-release: [CLDR 48.1.0](https://github.com/unicode-org/cldr-json/releases/tag/48.1.0).
+* Updated `and` with data from the latest Unicode CLDR release: [CLDR 48.1.0](https://github.com/unicode-org/cldr-json/releases/tag/48.1.0).
 
 ## New fully supported languages
 
